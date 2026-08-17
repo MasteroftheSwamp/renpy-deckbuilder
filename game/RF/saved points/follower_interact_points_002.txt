@@ -1,0 +1,6 @@
+default followerinteract_points = [
+    {'name': 'point_1', 'point': (884.0785101661369, 790.4088646314401), 'label': 'start', 'active': True, 'detected': False},
+    {'name': 'point_2', 'point': (1077.3684860459373, 614.2583353914547), 'label': 'start', 'active': True, 'detected': False},
+    {'name': 'point_3', 'point': (186.3154241232646, 507.3447155123987), 'label': 'start', 'active': True, 'detected': False},
+    {'name': 'point_4', 'point': (1637.0167342136226, 534.45705320957), 'label': 'start', 'active': True, 'detected': False}
+]

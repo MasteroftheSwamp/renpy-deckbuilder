@@ -10,8 +10,8 @@ label player_turn:
 label player_hand:
 
     python:
-        for enemy in enemies.enemies:
-            if renpy.showing(enemy.image(), layer=LAYER_ENEMIES) and enemy.health <= 0:
+        for enemy in list(enemies.enemies):
+            if enemy.health <= 0:
                 enemies.hide(enemy)
 
     if enemies.dead():
@@ -52,16 +52,22 @@ screen player_hand():
             drag_name player.id
             draggable False
             droppable True
-            selected_idle_child Solid((255, 255, 255, 100), xsize=player.XSIZE, ysize=player.YSIZE)
-            yalign 1.0
-
-            frame:
-                background Solid((0, 0, 0, 0))
-                xysize player.XSIZE, player.YSIZE
+            focus_mask True
+            idle_child Solid((0, 0, 0, 0), xsize=player.width, ysize=player.height)
+            selected_idle_child player.image("hover")
+            xalign player.XALIGN
+            yalign player.YALIGN
 
 
 init python:
     def ondrag(drags, drop) -> None:
+        """
+        Handle dropping a card on a character.
+
+        Card animations use renpy.pause(), which cannot run inside the
+        screen interaction that owns this drag callback.  We therefore
+        run card.use() inside a new context via invoke_in_new_context.
+        """
         drag = drags[0]
         card_id = drag.drag_name
         card = deck.get_card(card_id)
@@ -71,13 +77,17 @@ init python:
             return
 
         character_id = drop.drag_name
+        target = None
         if player.id == character_id:
-            card.use(player)
+            target = player
         elif character_id:
-            enemy = enemies.get(character_id)
-            card.use(enemy)
+            target = enemies.get(character_id)
 
-        # snap unused card back
+        if target is not None:
+            # New context so play_action / play_attack / play_special can pause
+            renpy.invoke_in_new_context(card.use, target)
+
+        # Snap back if the card was not consumed (e.g. not enough energy)
         if card in deck.hand:
             drag.snap(card.get_xpos(), card.get_ypos(), 0.2)
 

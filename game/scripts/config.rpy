@@ -6,7 +6,11 @@ init python:
     LAYER_ENEMIES = "enemies"
     renpy.add_layer(LAYER_ENEMIES, below="screens")
 
-    MUSIC_CHANNEL_UI="ui"
+    # FX layer sits above battle sprites so banners / cut-ins cover the field
+    LAYER_FX = "fx"
+    renpy.add_layer(LAYER_FX, above=LAYER_ENEMIES)
+
+    MUSIC_CHANNEL_UI = "ui"
     renpy.music.register_channel(MUSIC_CHANNEL_UI, "sound", loop=False)
 
 

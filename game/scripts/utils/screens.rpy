@@ -20,6 +20,16 @@ screen player_stats():
                 use stat("Health", player.health, player.health_max)
                 null height 15
                 use stat("Energy", player.energy, player.energy_max)
+                if player.status_icons_text():
+                    null height 10
+                    text player.status_icons_text() size 28 xalign 0.5
+
+    # Floating status icons above the player sprite
+    if player.status_icons_text():
+        text player.status_icons_text():
+            size 36
+            xalign player.XALIGN
+            yalign 0.22
 
 
 screen player_end_turn():
@@ -67,6 +77,17 @@ screen enemy_stats(enemy, xalign_pos):
                 text enemy.name
                 tooltip (enemy.say() or "...")
                 xalign 0.5
+
+            if enemy.status_icons_text():
+                null height 6
+                text enemy.status_icons_text() size 26 xalign 0.5
+
+    # Floating status icons above the enemy sprite
+    if enemy.status_icons_text():
+        text enemy.status_icons_text():
+            size 36
+            xalign xalign_pos
+            yalign 0.22
 
     use tooltip
 
@@ -137,3 +158,41 @@ screen card_frame(card, draggable=None):
                     Queue(MUSIC_CHANNEL_UI, "ui/mouserelease1.ogg"),
                     Function(draggable.top),
                 ]
+
+
+# ---------------------------------------------------------------------------
+# Special attack (JRPG-style) overlays
+# ---------------------------------------------------------------------------
+
+screen special_dim():
+    add Solid("#000000") at special_dim
+
+
+screen special_banner(title="SPECIAL ATTACK", colour="#ffcc00"):
+    frame:
+        at special_banner_slide
+        background Solid((0, 0, 0, 200))
+        xsize 900
+        ysize 100
+        xalign 0.5
+        yalign 0.35
+        padding (20, 10)
+
+        text title:
+            size 56
+            color colour
+            bold True
+            xalign 0.5
+            yalign 0.5
+            outlines [(3, "#000000", 0, 0)]
+
+
+screen special_cutin(image_name, is_player=True):
+    if is_player:
+        add image_name at special_cutin_player
+    else:
+        add image_name at special_cutin_enemy
+
+
+screen special_impact():
+    add Solid("#ffffff") at special_impact_flash

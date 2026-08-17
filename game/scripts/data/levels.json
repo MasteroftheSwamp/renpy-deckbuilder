@@ -12,11 +12,13 @@
                     },
                     {
                         "say": "{name} deals 1 damage.",
-                        "attack": 1
+                        "attack": 1,
+                        "anim": "kick"
                     },
                     {
                         "say": "{name} heals 1 health.",
-                        "heal": 1
+                        "heal": 1,
+                        "anim": "raise_hand"
                     }
                 ]
             },

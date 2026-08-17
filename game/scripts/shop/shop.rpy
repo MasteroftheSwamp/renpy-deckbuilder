@@ -72,14 +72,14 @@ label shop:
 
             jump reward
 
-        "Battle":
+        "Return":
             python:
                 config.menu_include_disabled = False
-                levels.next()
 
             hide screen player_deck
+            hide screen player_money
 
-            jump battle
+            jump intro
 
 
 screen card_add(cards):

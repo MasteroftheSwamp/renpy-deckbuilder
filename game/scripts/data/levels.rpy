@@ -91,6 +91,7 @@ init python:
 
             enemies.generate(level["enemies"])
             enemies.show()
+            player.show()
 
             deck.shuffle()
 
@@ -100,6 +101,7 @@ init python:
             End level.
             """
             self.battle = False
+            player.hide()
 
 
         def next(self, level=0) -> None:
@@ -117,5 +119,6 @@ init python:
             Restart level.
             """
             self.level = 0
-            deck = Deck()
-            player = Player()
+            self.battle = False
+            renpy.store.deck = Deck()
+            renpy.store.player = Player()

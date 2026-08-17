@@ -5,15 +5,30 @@ init python:
     class Deck:
         def __init__(self) -> None:
             self.cards = [
-                Card(action={"attack": {"value": 3, "all": True}}, cost=2, name="Fireball"),
-                Card(action={"attack": {"value": 3, "stun": True}}, cost=2, name="Bash"),
-                Card(action={"attack": {"value": 3}}, cost=1, name="Punch"),
-                Card(action={"attack": {"value": 6}, "draw": {"value": 1}}, cost=2, name="Slash"),
-                Card(action={"draw": {"value": 2}}, cost=1, name="Book"),
-                Card(action={"energy": {"value": 1}}, cost=0, name="Meditate"),
-                Card(action={"energy": {"value": 2}}, cost=1, name="Pray"),
-                Card(action={"heal": {"value": 3, "times": 2}}, cost=2, name="Heal"),
-                Card(action={"heal": {"value": 3}}, cost=1, name="Heal"),
+                Card(
+                    action={"attack": {"value": 5, "all": True}},
+                    cost=2,
+                    name="Fireball",
+                    anim="cast",
+                    special={"title": "FIREBALL", "anim": "cast", "colour": "#ff6622", "sfx": "sound/powerup.ogg"},
+                ),
+                Card(
+                    action={"attack": {"value": 10}},
+                    cost=2,
+                    name="Finishing Strike",
+                    anim="slash",
+                    special={"title": "FINISHING STRIKE", "anim": "slash", "colour": "#ffcc00", "sfx": "sound/powerup.ogg"},
+                ),
+                Card(action={"attack": {"value": 3, "stun": True}}, cost=2, name="Bash", anim="punch"),
+                Card(action={"attack": {"value": 3}}, cost=1, name="Punch", anim="punch"),
+                Card(action={"attack": {"value": 6}, "draw": {"value": 1}}, cost=2, name="Slash", anim="slash"),
+                Card(action={"attack": {"value": 2, "poison": True, "poison_duration": 3, "poison_stacks": 1}}, cost=1, name="Poison Dart", anim="cast"),
+                Card(action={"draw": {"value": 2}}, cost=1, name="Book", anim="cast"),
+                Card(action={"energy": {"value": 1}}, cost=0, name="Meditate", anim="drink"),
+                Card(action={"energy": {"value": 2}}, cost=1, name="Pray", anim="raise_hand"),
+                Card(action={"heal": {"value": 3, "times": 2}}, cost=2, name="Heal", anim="raise_hand"),
+                Card(action={"heal": {"value": 3, "cleanse": "poisoned"}}, cost=1, name="Antidote", anim="raise_hand"),
+                Card(action={"heal": {"value": 2, "cleanse": "stunned"}}, cost=1, name="Shake Off", anim="drink"),
             ]
 
             self.draw_pile = []

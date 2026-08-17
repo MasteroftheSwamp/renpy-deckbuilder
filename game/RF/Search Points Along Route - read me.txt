@@ -1,0 +1,7 @@
+For people wondering how to view points along the line. Heres how you can
+
+When you start go to the Run Edit Route option. Then go to the textbutton option Debug_Text and click it. On the left hand side it will show text.
+
+Look at target x and y, that is the red dot that moves along the route lines you created. What you do is write down the exact point you want the point your searching for and thats it.
+
+Very analog/manual but hey beats not having something top show you right?

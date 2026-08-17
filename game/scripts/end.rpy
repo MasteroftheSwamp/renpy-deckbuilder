@@ -1,5 +1,7 @@
 label end:
 
+    $ hide_hud()
+
     hide screen player_end_turn
     hide screen player_stats
     hide screen player_money
