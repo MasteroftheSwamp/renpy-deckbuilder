@@ -28,7 +28,9 @@ label intro:
     hide screen enemy_stats2
     hide screen enemy_stats3
 
-    scene black onlayer enemies
+    # Clear sprite/FX layers (do NOT fill them with black — that covers the BG)
+    $ renpy.scene(layer="enemies")
+    $ renpy.scene(layer="fx")
     scene bg plain with fade
 
     # HUD should already be up from start / overworld; ensure it is

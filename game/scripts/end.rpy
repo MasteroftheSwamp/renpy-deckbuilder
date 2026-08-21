@@ -1,6 +1,8 @@
 label end:
 
     $ hide_hud()
+    $ renpy.scene(layer="enemies")
+    $ renpy.scene(layer="fx")
 
     hide screen player_end_turn
     hide screen player_stats

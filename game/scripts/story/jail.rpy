@@ -9,7 +9,8 @@ label jail:
     hide screen enemy_stats2
     hide screen enemy_stats3
 
-    scene black onlayer enemies
+    $ renpy.scene(layer="enemies")
+    $ renpy.scene(layer="fx")
     scene bg jail with fade
 
     # Restore health to 10% of max (at least 1)

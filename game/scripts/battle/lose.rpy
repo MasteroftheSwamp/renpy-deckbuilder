@@ -11,8 +11,9 @@ label lose:
     hide screen enemy_stats2
     hide screen enemy_stats3
 
-    # Clear battle sprites from the enemies layer
-    scene black onlayer enemies
+    # Clear battle sprites (empty the layer — no full-screen black)
+    $ renpy.scene(layer="enemies")
+    $ renpy.scene(layer="fx")
     $ player.hide()
 
     # Resolve opponent name + which pre-declared side bust to use

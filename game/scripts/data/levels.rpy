@@ -85,8 +85,13 @@ init python:
             player.moves = player.moves_max
 
             if self.level >= 0:
-                renpy.scene()
-                renpy.show(level["scene"])
+                scene_name = level.get("scene") or "bg plain"
+                # Clear layers: NEVER leave a full-screen black on "enemies"
+                # (that sits above master and hides the battle background).
+                renpy.scene(layer="master")
+                renpy.scene(layer="enemies")
+                renpy.scene(layer="fx")
+                renpy.show(scene_name, layer="master")
                 renpy.with_statement(dissolve)
 
             enemies.generate(level["enemies"])

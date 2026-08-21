@@ -96,11 +96,11 @@ image player idle_shielded_low = Image("player/BattleSprites/DarkDameBattle-Idle
 
 
 # ---------------------------------------------------------------------------
-# Story / ending backgrounds & side images
+# Battle / story backgrounds (no spaces in paths; fill 1920x1080)
 # ---------------------------------------------------------------------------
-image bg defeat = "bg/bg defeat.jpg"
-image bg jail = "bg/bg jail.jpg"
-image bg plain = "bg/bg plain.jpg"
+image bg plain = Transform(Image("bg/plain.jpg"), xysize=(1920, 1080))
+image bg defeat = Transform(Image("bg/defeat.jpg"), xysize=(1920, 1080))
+image bg jail = Transform(Image("bg/jail.jpg"), xysize=(1920, 1080))
 
 # Busts used as side images next to the dialogue box (must be declared at init)
 image side opponent = Image("enemies/opponent bust.png")
