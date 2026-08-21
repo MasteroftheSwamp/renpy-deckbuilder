@@ -77,9 +77,15 @@ label test_world:
     $ dev_mode = False
     $ light_togg = False
     $ wrench_togg = True
+    $ show_hud()
     $ follower.load_interact_points(example_interact_points)
     $ load_predefined_route(rl, route_line_test)
     $ follower.set_teleport (962,507,follower.route.lines)
+    # One-shot arena entrance: keep disabled if already used
+    if arena_entrance_used:
+        $ follower.togg_interact_point("arena_entrance", False)
+    else:
+        $ follower.togg_interact_point("arena_entrance", True)
     menu:
         "Would you like to use the independent horizontal images test? (Turn off auto flip image)"
         "Yes! Turn off auto flip! (follower.turn = False)":
@@ -126,10 +132,21 @@ label stop_sign:
     $ lock_plyr_cntrl = False
     $ renpy.pause(modal=False,hard=True)
 
+
+label enter_intro:
+    # Triggered by the arena_entrance interact point on the map
+    $ mark_arena_entrance_used()
+    $ follower.stop_follower()
+    hide screen test_world
+    jump intro
+
+
 default example_interact_points = [
     {'name': 'point_1', 'point': (1637.510916459668, 536.7044058046804), 'label': 'wrench_grab', 'active': True, 'detected': False},
     {'name': 'point_2', 'point': (675.2557598324413, 747.6416104258785), 'label': 'stop_sign', 'active': True, 'detected': False},
-    {'name': 'point_3', 'point': (338.8728287308628, 168.95759049935612), 'label': 'light_toggle', 'active': True, 'detected': False}
+    {'name': 'point_3', 'point': (338.8728287308628, 168.95759049935612), 'label': 'light_toggle', 'active': True, 'detected': False},
+    # Arena entrance — walking here jumps to intro (one-shot via arena_entrance_used)
+    {'name': 'arena_entrance', 'point': (1002.0, 472.0), 'label': 'enter_intro', 'active': True, 'detected': False},
 ]
 
 default light_togg = False
@@ -171,6 +188,10 @@ screen test_world:
         add follower
 
     add "RF/example images/map stuff/stop.png" xoffset 450 yoffset 550
+
+    # Second stop sign — marks the arena entrance interact point
+    if not arena_entrance_used:
+        add "RF/example images/map stuff/stop.png" xoffset 777 yoffset 275
 
     vbox:
         xalign 1.0

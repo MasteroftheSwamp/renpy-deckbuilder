@@ -3,8 +3,8 @@ default player = Player()
 
 init python:
     class Player(RPGCharacter):
-        XALIGN = 0.18
-        YALIGN = 1.0
+        XALIGN = 0.0
+        YALIGN = 0.7
 
 
         def __init__(self, health=15, energy=3) -> None:
@@ -28,10 +28,12 @@ init python:
             self.shop_cards = 2
 
             self.home_xalign = self.XALIGN
+            self.home_yalign = self.YALIGN
 
 
         def show(self) -> None:
             self.home_xalign = self.XALIGN
+            self.home_yalign = self.YALIGN
             self.refresh_sprite()
             renpy.with_statement(dissolve)
 

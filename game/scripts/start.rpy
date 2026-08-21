@@ -6,8 +6,13 @@ label start:
     $ levels.restart()
     $ inventory.clear()
     $ quests.set_active("fight_arena")
+    $ reset_arena_entrance()
 
-    jump intro
+    # HUD visible from the very beginning (overworld + intro)
+    $ show_hud()
+
+    # Enter the route-finder overworld
+    jump test_world
 
 
 label intro:
@@ -26,6 +31,7 @@ label intro:
     scene black onlayer enemies
     scene bg plain with fade
 
+    # HUD should already be up from start / overworld; ensure it is
     $ show_hud()
 
     "Welcome to the arena."
@@ -39,5 +45,13 @@ label intro:
             jump battle
 
         "Leave":
-            $ hide_hud()
-            jump end
+            # Return to the overworld map
+            jump return_to_overworld
+
+
+label return_to_overworld:
+    """
+    Re-enter the route-finder map from intro / other story labels.
+    """
+    $ show_hud()
+    jump test_world

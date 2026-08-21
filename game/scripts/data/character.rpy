@@ -39,7 +39,7 @@ init python:
             if image:
                 self.image_name = image
                 if image == "player":
-                    hover_path = f"images/player/{image} hover.png"
+                    hover_path = "images/player/BattleSprites/DarkDameBattle-Hover.png"
                 else:
                     hover_path = f"images/enemies/{image} hover.png"
                 width, height = renpy.image_size(hover_path)
@@ -64,6 +64,7 @@ init python:
             self.statuses = {}
 
             self.home_xalign = 0.5
+            self.home_yalign = 1.0
 
 
         # ------------------------------------------------------------------
@@ -247,10 +248,11 @@ init python:
             """
             if not hasattr(self, "image_name"):
                 return
-            home = getattr(self, "home_xalign", 0.5)
+            home_x = getattr(self, "home_xalign", 0.5)
+            home_y = getattr(self, "home_yalign", 1.0)
             state = self.get_idle_state()
             tag = self.image(state)
-            at_list = [position(home)]
+            at_list = [position(home_x, home_y)]
 
             tint = self.active_tint()
             if tint:
@@ -314,15 +316,16 @@ init python:
             """
             Play a non-attack (or simple) battle animation, then return to proper idle.
             """
-            home = getattr(self, "home_xalign", 0.5)
+            home_x = getattr(self, "home_xalign", 0.5)
+            home_y = getattr(self, "home_yalign", 1.0)
             tag = self.image(anim)
             at_list = []
 
             if target_xalign is not None:
-                mid = home + (target_xalign - home) * 0.6
-                at_list.append(lunge(home, mid, duration=duration))
+                mid = home_x + (target_xalign - home_x) * 0.6
+                at_list.append(lunge(home_x, mid, duration=duration, y=home_y))
             else:
-                at_list.append(position(home))
+                at_list.append(position(home_x, home_y))
 
             if effect == "glow":
                 at_list.append(heal_glow)
@@ -345,16 +348,17 @@ init python:
             2. On contact → target plays hit reaction
             3. Return home → refresh idle
             """
-            home = getattr(self, "home_xalign", 0.5)
+            home_x = getattr(self, "home_xalign", 0.5)
+            home_y = getattr(self, "home_yalign", 1.0)
             target_x = getattr(target, "home_xalign", 0.8) if target else 0.8
-            mid = home + (target_x - home) * 0.6
+            mid = home_x + (target_x - home_x) * 0.6
             contact = duration * 0.38
             ret = duration * 0.42
 
             # Approach
             renpy.show(
                 self.image(anim),
-                at_list=[lunge_approach(home, mid, contact)],
+                at_list=[lunge_approach(home_x, mid, contact, y=home_y)],
                 layer=LAYER_ENEMIES,
             )
             if sfx:
@@ -363,13 +367,13 @@ init python:
 
             # Contact — hit reaction on target
             if target is not None:
-                knock_dir = 1 if home < target_x else -1
+                knock_dir = 1 if home_x < target_x else -1
                 target.play_hit_reaction(knock_dir=knock_dir)
 
             # Return
             renpy.show(
                 self.image(anim),
-                at_list=[lunge_return(mid, home, ret)],
+                at_list=[lunge_return(mid, home_x, ret, y=home_y)],
                 layer=LAYER_ENEMIES,
             )
             renpy.pause(ret)
@@ -380,10 +384,11 @@ init python:
             """
             Hurt pose + knockback + red flash + shake, then back to proper idle.
             """
-            home = getattr(self, "home_xalign", 0.5)
+            home_x = getattr(self, "home_xalign", 0.5)
+            home_y = getattr(self, "home_yalign", 1.0)
             renpy.show(
                 self.image("hurt"),
-                at_list=[hit_reaction(home, knock_dir=knock_dir, duration=duration)],
+                at_list=[hit_reaction(home_x, knock_dir=knock_dir, duration=duration, y=home_y)],
                 layer=LAYER_ENEMIES,
             )
             renpy.sound.queue("sound/punch.ogg", relative_volume=0.4)
