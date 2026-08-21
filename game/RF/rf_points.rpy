@@ -59,6 +59,18 @@ default rooftop_a_points_1 = [
             "The face on it is half torn away.",
         ],
     },
+    {
+        "name": "fight_promoter",
+        "point": (1818.2142857142856, 1047.857142857143),
+        "label": "fight_promoter_talk",
+        "active": True,
+        "detected": False,
+        "once": False,
+        "char_name": "Fight Promoter",
+        "map_sprite": "rf/placeholders/npc_marker.png",
+        "side_image": "rf/placeholders/npc_side.png",
+    },
+
 ]
 
 
@@ -187,7 +199,9 @@ label rf_point_end:
     $ rf_active_point = None
     if _jump:
         $ lock_plyr_cntrl = False
-        $ rf_resume_walk()
+        $ rooftop_a_follower.stop_follower()
+        hide screen rf_cinematic
+        hide screen rf_map
         jump expression _jump
     # Resume any paused path, then unlock click-to-move
     $ rf_resume_walk()
@@ -289,3 +303,23 @@ label rf_show:
 
     hide screen rf_cinematic
     jump rf_point_end
+
+
+# Dedicated arena recruiter — always leaves the map for intro/battle
+label fight_promoter_talk:
+    $ rf_active_point = rf_get_trigger_point()
+    $ lock_plyr_cntrl = True
+    $ rf_pause_walk()
+
+    show screen rf_cinematic("rf/placeholders/npc_side.png", dim=0.0, side=True)
+
+    $ _who = Character("Fight Promoter", color="#cceeff")
+    _who "You look like you can handle yourself."
+    _who "The arena's waiting — prove it, or get carried out."
+    _who "Step inside when you're ready."
+
+    hide screen rf_cinematic
+    $ lock_plyr_cntrl = False
+    $ rooftop_a_follower.stop_follower()
+    hide screen rf_map
+    jump enter_intro

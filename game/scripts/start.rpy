@@ -19,6 +19,12 @@ label intro:
 
     $ quick_menu = False
 
+    # Leave the overworld map behind
+    hide screen rf_map
+    hide screen rf_cinematic
+    hide screen test_world
+    $ lock_plyr_cntrl = False
+
     hide screen player_end_turn
     hide screen player_stats
     hide screen player_money

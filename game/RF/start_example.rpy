@@ -134,10 +134,15 @@ label stop_sign:
 
 
 label enter_intro:
-    # Triggered by the arena_entrance interact point on the map
+    # Arena entry from RF map / fight promoter
     $ mark_arena_entrance_used()
+    $ lock_plyr_cntrl = False
     $ follower.stop_follower()
+    $ rooftop_a_follower.stop_follower()
+    hide screen rf_cinematic
+    hide screen rf_map
     hide screen test_world
+    hide screen editor_world
     jump intro
 
 
