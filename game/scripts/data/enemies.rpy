@@ -179,7 +179,6 @@ init python:
                     )
                     renpy.with_statement(vpunch)
                     player.hurt(attack)
-                    player.refresh_sprite()
 
                     if player.health <= 0:
                         renpy.jump("lose")
@@ -192,12 +191,17 @@ init python:
                         duration=0.5,
                     )
                     enemy.recover(heal)
-                    # Optional self-cleanse on heal
                     if action.get("cleanse"):
                         enemy.remove_status(action["cleanse"])
 
                 else:
-                    renpy.pause(0.3)
+                    if anim and anim != "idle":
+                        enemy.play_action(anim=anim, duration=0.4)
+                    else:
+                        renpy.pause(0.3)
+
+                self._apply_action_status(action, player)
+                player.refresh_sprite()
 
                 if has_actions:
                     enemy.actions.append(action)
@@ -205,6 +209,55 @@ init python:
                 enemy.refresh_sprite()
 
             self.end_turn()
+
+
+        def _apply_action_status(self, action, target) -> None:
+            """Apply status effects from an enemy action onto target (usually the player)."""
+            for spec in action.get("statuses") or []:
+                key = spec.get("key") or spec.get("name")
+                if key:
+                    target.add_status(
+                        key,
+                        duration=spec.get("duration"),
+                        stacks=spec.get("stacks"),
+                    )
+
+            status = action.get("status")
+            if isinstance(status, str):
+                target.add_status(
+                    status,
+                    duration=action.get("status_duration"),
+                    stacks=action.get("status_stacks"),
+                )
+            elif isinstance(status, dict):
+                key = status.get("key") or status.get("name")
+                if key:
+                    target.add_status(
+                        key,
+                        duration=status.get("duration"),
+                        stacks=status.get("stacks"),
+                    )
+
+            if action.get("stun") or action.get("stunned"):
+                target.add_status("stunned", duration=action.get("stun_duration", 1))
+            if action.get("poison") or action.get("poisoned"):
+                target.add_status(
+                    "poisoned",
+                    duration=action.get("poison_duration", 3),
+                    stacks=action.get("poison_stacks", 1),
+                )
+            if action.get("burn") or action.get("burned"):
+                target.add_status(
+                    "burned",
+                    duration=action.get("burn_duration", 2),
+                    stacks=action.get("burn_stacks", 1),
+                )
+            if action.get("freeze") or action.get("frozen"):
+                target.add_status("frozen", duration=action.get("freeze_duration", 1))
+            if action.get("weak"):
+                target.add_status("weak", duration=action.get("weak_duration", 2))
+            if action.get("vulnerable"):
+                target.add_status("vulnerable", duration=action.get("vulnerable_duration", 2))
 
 
         def end_turn(self) -> None:

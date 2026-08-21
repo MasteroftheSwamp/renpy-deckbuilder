@@ -5,15 +5,30 @@
             {
                 "name": "Boy",
                 "image": "boy",
-                "health": 5,
+                "health": 8,
                 "actions": [
                     {
                         "say": "{name} is thinking..."
                     },
                     {
-                        "say": "{name} deals 1 damage.",
+                        "say": "{name} kicks you for 1 damage.",
                         "attack": 1,
                         "anim": "kick"
+                    },
+                    {
+                        "say": "{name} throws a poison dart! You are poisoned.",
+                        "attack": 1,
+                        "anim": "cast",
+                        "status": "poisoned",
+                        "status_duration": 3,
+                        "status_stacks": 1
+                    },
+                    {
+                        "say": "{name} lands a stunning blow!",
+                        "attack": 1,
+                        "anim": "punch",
+                        "stun": true,
+                        "stun_duration": 1
                     },
                     {
                         "say": "{name} heals 1 health.",
@@ -25,11 +40,46 @@
             {
                 "name": "Girl",
                 "image": "girl",
-                "health": 5,
-                "attack_min": 1,
-                "attack_max": 2,
-                "heal_min": 1,
-                "heal_max": 2
+                "health": 8,
+                "actions": [
+                    {
+                        "say": "{name} studies your stance..."
+                    },
+                    {
+                        "say": "{name} slashes for 2 damage and leaves you vulnerable.",
+                        "attack": 2,
+                        "anim": "slash",
+                        "status": "vulnerable",
+                        "status_duration": 2
+                    },
+                    {
+                        "say": "{name} casts a freezing spell! You are frozen.",
+                        "attack": 1,
+                        "anim": "cast",
+                        "status": "frozen",
+                        "status_duration": 1
+                    },
+                    {
+                        "say": "{name} weakens your arms.",
+                        "attack": 1,
+                        "anim": "cast",
+                        "status": "weak",
+                        "status_duration": 2
+                    },
+                    {
+                        "say": "{name} scorches you! You are burned.",
+                        "attack": 1,
+                        "anim": "cast",
+                        "status": "burned",
+                        "status_duration": 2,
+                        "status_stacks": 1
+                    },
+                    {
+                        "say": "{name} recovers 2 health.",
+                        "heal": 2,
+                        "anim": "raise_hand"
+                    }
+                ]
             }
         ]
     },

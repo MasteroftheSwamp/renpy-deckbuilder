@@ -22,14 +22,19 @@ screen player_stats():
                 use stat("Energy", player.energy, player.energy_max)
                 if player.status_icons_text():
                     null height 10
-                    text player.status_icons_text() size 28 xalign 0.5
+                    text player.status_icons_text() size 28 xalign 0.0
 
-    # Floating status icons above the player sprite
+    # Floating status icons on the player BATTLE SPRITE (top-centre of the sprite art)
+    # Sprite uses xalign/yalign anchors; icon position is computed from sprite size.
     if player.status_icons_text():
+        $ _psx = int(config.screen_width * player.XALIGN + (0.5 - player.XALIGN) * player.width)
+        $ _psy = int(config.screen_height * getattr(player, "YALIGN", 1.0) - getattr(player, "YALIGN", 1.0) * player.height + 12)
         text player.status_icons_text():
             size 36
-            xalign player.XALIGN
-            yalign 0.22
+            xpos _psx
+            xanchor 0.5
+            ypos _psy
+            yanchor 0.5
 
 
 screen player_end_turn():
@@ -80,14 +85,18 @@ screen enemy_stats(enemy, xalign_pos):
 
             if enemy.status_icons_text():
                 null height 6
-                text enemy.status_icons_text() size 26 xalign 0.5
+                text enemy.status_icons_text() size 26 xalign 0.0
 
-    # Floating status icons above the enemy sprite
+    # Floating status icons on the enemy BATTLE SPRITE (top-centre of the sprite art)
     if enemy.status_icons_text():
+        $ _esx = int(config.screen_width * xalign_pos + (0.5 - xalign_pos) * enemy.width)
+        $ _esy = int(config.screen_height * Enemies.YALIGN - Enemies.YALIGN * enemy.height + 12)
         text enemy.status_icons_text():
             size 36
-            xalign xalign_pos
-            yalign 0.22
+            xpos _esx
+            xanchor 0.5
+            ypos _esy
+            yanchor 0.5
 
     use tooltip
 
