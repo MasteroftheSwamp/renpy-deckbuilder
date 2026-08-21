@@ -98,6 +98,16 @@ init python:
 
         # Play pathfinding route + the on-screen follower (owns interact points)
         load_predefined_route(renpy.store.rooftop_a_rl, route)
+        if level_id == "rooftop_a_1":
+            # Reset detected flags so points can fire again on a fresh enter
+            for _p in renpy.store.rooftop_a_points_1:
+                if not _p.get("once") or _p.get("active", True):
+                    _p["detected"] = False
+            renpy.store.rooftop_a_follower.load_interact_points(renpy.store.rooftop_a_points_1)
+        else:
+            if not renpy.store.rooftop_a_follower.follower.interact_points:
+                renpy.store.rooftop_a_follower.load_interact_points([])
+
         # Keep any points already on the follower when reloading same session;
         # start fresh only if empty is desired — points list stays on follower.
         renpy.store.rooftop_a_follower.set_teleport(
@@ -178,7 +188,15 @@ screen rf_map:
     else:
         add rooftop_a_rl
 
-    # Always the same follower for walking + interact drops/saves
+    # NPC/item markers BEHIND the player follower
+    for _mk_pt, _mk_spr in rf_map_markers():
+        $ _mk_x, _mk_y = _mk_pt["point"]
+        add _mk_spr:
+            xpos int(_mk_x)
+            ypos int(_mk_y)
+            xanchor 0.5
+            yanchor 1.0
+
     if follower_show:
         add rooftop_a_follower
 

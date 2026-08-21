@@ -12,7 +12,7 @@ label start:
     $ show_hud()
 
     # Enter the route-finder overworld
-    jump rooftop_a_3
+    jump rooftop_a_1
 
 
 label intro:
