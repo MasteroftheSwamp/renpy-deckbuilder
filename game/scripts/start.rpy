@@ -12,7 +12,7 @@ label start:
     $ show_hud()
 
     # Enter the route-finder overworld
-    jump test_world
+    jump rooftop_a_3
 
 
 label intro:
@@ -56,4 +56,4 @@ label return_to_overworld:
     Re-enter the route-finder map from intro / other story labels.
     """
     $ show_hud()
-    jump test_world
+    jump rooftop_a_1
