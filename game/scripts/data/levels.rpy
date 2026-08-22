@@ -76,15 +76,23 @@ init python:
 
         def start(self) -> None:
             """
-            Start level.
+            Start level — arena ladder or a named fight instance.
             """
             self.battle = True
-            level = self.get()
 
             player.energy = player.energy_max
             player.moves = player.moves_max
 
-            if self.level >= 0:
+            if getattr(renpy.store, "battle_mode", "arena") == "instance":
+                fight = get_fight(renpy.store.current_fight_id) or {}
+                level = {
+                    "scene": fight.get("scene") or "bg plain",
+                    "enemies": fight.get("enemies") or [],
+                }
+            else:
+                level = self.get()
+
+            if self.level >= 0 or getattr(renpy.store, "battle_mode", "arena") == "instance":
                 scene_name = level.get("scene") or "bg plain"
                 # Clear layers: NEVER leave a full-screen black on "enemies"
                 # (that sits above master and hides the battle background).
@@ -97,6 +105,12 @@ init python:
             enemies.generate(level["enemies"])
             enemies.show()
             player.show()
+
+            # Overworld card rewards
+            try:
+                rf_apply_extra_cards_to_deck()
+            except Exception:
+                pass
 
             deck.shuffle()
 

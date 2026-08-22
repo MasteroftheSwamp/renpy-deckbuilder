@@ -35,7 +35,11 @@ label win:
 
     "You earned $[loot] + $[interest] (interest)."
 
-    if wins % 3 == 1:
+    if battle_mode == "instance":
+        # One-off fights always get a reward pass, then shop → return to map
+        $ rewards += 1
+        jump reward
+    elif wins % 3 == 1:
         $ rewards += 1
         jump reward
     else:

@@ -65,7 +65,7 @@ default rooftop_a_points_1 = [
         "label": "fight_promoter_talk",
         "active": True,
         "detected": False,
-        "once": False,
+        "once": True,
         "char_name": "Fight Promoter",
         "map_sprite": "rf/placeholders/npc_marker.png",
         "side_image": "rf/placeholders/npc_side.png",
@@ -311,6 +311,11 @@ label fight_promoter_talk:
     $ lock_plyr_cntrl = True
     $ rf_pause_walk()
 
+    # One-shot promoter
+    if rf_active_point is not None:
+        $ rf_active_point["once"] = True
+        $ rf_mark_once(rf_active_point)
+
     show screen rf_cinematic("rf/placeholders/npc_side.png", dim=0.0, side=True)
 
     $ _who = Character("Fight Promoter", color="#cceeff")
@@ -322,4 +327,9 @@ label fight_promoter_talk:
     $ lock_plyr_cntrl = False
     $ rooftop_a_follower.stop_follower()
     hide screen rf_map
-    jump enter_intro
+    hide screen rf_cinematic
+
+    # Instance fight (not the arena ladder)
+    $ battle_mode = "instance"
+    $ current_fight_id = "promoter_bout"
+    jump battle

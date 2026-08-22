@@ -79,7 +79,13 @@ label shop:
             hide screen player_deck
             hide screen player_money
 
-            jump intro
+            if battle_mode == "instance":
+                $ _win_label = fight_on_win_label()
+                $ clear_fight_mode()
+                $ show_hud()
+                jump expression _win_label
+            else:
+                jump intro
 
 
 screen card_add(cards):

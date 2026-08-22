@@ -1,6 +1,7 @@
 label lose:
 
     $ levels.end()
+    $ clear_fight_mode()
 
     hide screen player_end_turn
     hide screen player_stats
