@@ -1,0 +1,364 @@
+## LIST OF FUNCTIONS AND INFO DEVS CAN USE - EASY START ##
+##########################################################
+~~ Here is a list of elements to change the follower variables/route changing functions that dev can use
+
+////////////////////////////////////////////////////////////////////////////////
+-- FOLLOWER FUNCTIONS --
+ ● def reset_follower(self):
+     """ RESET FOLLOWER IMAGE// USED WHEN SWAPPING IMG IDS """
+
+ ● def change_follower_dir(self,dir=None):
+     """ SETS FOLLOWER DIRECTION THEN SETS THE IMAGE """
+
+ ● def change_follower_act(self,act=None):
+     """ SETS FOLLOWER ACTION // GET THE IMAGE STATES FROM THE IMAGE LIBRARY """
+
+
+ ● def stop_follower(self):
+     """ STOPS FOLLOWER IN THEIR TRACKS """
+
+ ● def pause_follower(self):
+     """ PAUSES FOLLOWER ON STANDBY TO CONTINUE """
+
+ ● def play_follower(self):
+     """ RESUMES THE FOLLOWERS PATH IT WAS HEADED """
+
+
+ ● def set_teleport(self, x, y, lines):
+     """ TELEPORT THE FOLLOWER TO THE CLOSEST POINT ON THE LINES // type in the x and y coordinates to place player on the line"""
+
+ ● def set_destination(self, dest_x, dest_y, lines):
+     """SETS PATH/DESTINATION TO POINT// target point that the follower will follow """
+
+ ● def set_button_destination(self, dest_x, dest_y, lines):
+     """SETS PATH/DESTINATION TO POINT THROUGH A BUTTON// target point that the follower will follow """
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+-- ROUTE FUNCTIONS --
+ ● def load_predefined_route(route, predefined_route):
+     """ LOADS THE DEFINED ROUTE TO THE DEFINED ROUTE CLASS """
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+-- INTERACT POINTS FUNCTIONS --
+ ● def togg_interact_point(self,name,togg):
+     """ TOGGLES IF SPECIFIC INTERACT POINT IS ACTIVE """
+
+ ● def set_interact_point(self,name,labl):
+     """ CHANGES INTERACT POINT LABEL """
+
+ ● def remove_interact_point(self,name):
+     """ REMOVES INTERACT POINT IN THE INTERACT POINT LIST """
+
+ ● def load_interact_points(self,int_pts):
+     """ LOADS PRE DEFINED INTERACT POINT LIST """
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+-- BUTTON INTERACT POINTS --
+ ● def set_reach(self,labl): ## used with set_button_destination function // CHANGES THE REACH ACTION
+     """ CHANGES THE LABEL WHEN THE PLAYER REACHES THE DESTINATION """
+////////////////////////////////////////////////////////////////////////////////
+
+~~ Here is a lil tutorial of changeable elements inside of the route follower template
+to help you navigate easier.
+
+~~ Next is a step by step on how to setup the follower route system
+
+
+
+
+## CREATING IMAGE LIBRARY ## -- 00
+~~ To start, you first need a defined follower image. What will be used is called a image library. These are libraries that contain images during specific states and actions.
+Heres how it can look like. In the file follower_ent_lib.rpy youll see it here . . .
+
+default android_lib = {
+                    "stand_u": {"image":Transform("RF/example images/android/body/stand/u/0.png",zoom=1.0), "xoff":-3,"yoff":0}, ## STAND
+                    "stand_h": {"image":Transform("RF/example images/android/body/stand/h/0.png",zoom=1.0), "xoff":-3,"yoff":0}, ## STAND
+                    "stand_d": {"image":Transform("RF/example images/android/body/stand/d/0.png",zoom=1.0), "xoff":-3,"yoff":0}, ## STAND
+
+                    "walk_u": {"image":"android_walk_u", "xoff":-3,"yoff":0}, ## WALK
+                    "walk_h": {"image":"android_walk_h", "xoff":-3,"yoff":0}, ## WALK
+                    "walk_d": {"image":"android_walk_d", "xoff":-3,"yoff":0}, ## WALK
+
+                    ## OTHER ##
+                    "angry": {"image":Transform("RF/example images/android/body/other/angry.png",zoom=1.0), "xoff":-3,"yoff":0}, ## ANGRY
+                    "happy": {"image":Transform("RF/example images/android/body/other/happy.png",zoom=1.0), "xoff":-3,"yoff":0}, ## HAPPY
+                    "sad": {"image":Transform("RF/example images/android/body/other/sad.png",zoom=1.0), "xoff":-3,"yoff":0}, ## SAD
+
+                }
+
+~~ The walk stand are states that are looked for, if the state matches it will use that image. If you look at xoff and yoff above, these variables are image offsets
+that will move the image in the direction by that amount. Turn on dev mode and look at the image compared to the red follower square to get the most out of this variable.
+
+~~ You can also add other states not involved with movement. Using change_follower_act will allow you to change the image to a non directional image
+~~ Using change_follower_dir will allow you to change the direction of the image and set the follower using the built in set follower system
+
+~~ There are options in the follower variables like turn and directional_mode here are examples:
+- If turn is True then the image will be auto flipped to save on resources // If False then you will need to provide your own left and right images
+-
+## turn = True // directional_mode = "4" ##
+default android_lib = {
+                    "stand_u": {"image":Transform("RF/example images/android/body/stand/u/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_h": {"image":Transform("RF/example images/android/body/stand/h/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_d": {"image":Transform("RF/example images/android/body/stand/d/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+
+                    "walk_u": {"image":"android_walk_u", "xoff":0,"yoff":0}, ## WALK
+                    "walk_h": {"image":"android_walk_h", "xoff":0,"yoff":0}, ## WALK
+                    "walk_d": {"image":"android_walk_d", "xoff":0,"yoff":0}, ## WALK
+
+                }
+## turn = False // directional_mode = "4" ##
+default android_lib = {
+                    "stand_u": {"image":Transform("RF/example images/android/body/stand/u/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_hl": {"image":Transform("RF/example images/android/body/stand/hl/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_hr": {"image":Transform("RF/example images/android/body/stand/hr/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_d": {"image":Transform("RF/example images/android/body/stand/d/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+
+                    "walk_u": {"image":"android_walk_u", "xoff":0,"yoff":0}, ## WALK
+                    "walk_hl": {"image":"android_walk_hl", "xoff":0,"yoff":0}, ## WALK
+                    "walk_hr": {"image":"android_walk_hr", "xoff":0,"yoff":0}, ## WALK
+                    "walk_d": {"image":"android_walk_d", "xoff":0,"yoff":0}, ## WALK
+
+                }
+
+
+
+## turn = True // directional_mode = "8" ##
+default android_lib = {
+                    "stand_u": {"image":Transform("RF/example images/android/body/stand/u/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_uh": {"image":Transform("RF/example images/android/body/stand/uh/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_h": {"image":Transform("RF/example images/android/body/stand/h/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_d": {"image":Transform("RF/example images/android/body/stand/d/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_dh": {"image":Transform("RF/example images/android/body/stand/dh/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+
+                    "walk_u": {"image":"android_walk_u", "xoff":0,"yoff":0}, ## WALK
+                    "walk_uh": {"image":"android_walk_uh", "xoff":0,"yoff":0}, ## WALK
+                    "walk_h": {"image":"android_walk_h", "xoff":0,"yoff":0}, ## WALK
+                    "walk_d": {"image":"android_walk_d", "xoff":0,"yoff":0}, ## WALK
+                    "walk_dh": {"image":"android_walk_dh", "xoff":0,"yoff":0}, ## WALK
+
+                }
+## turn = False // directional_mode = "8" ##
+default android_lib = {
+                    "stand_u": {"image":Transform("RF/example images/android/body/stand/u/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_uhl": {"image":Transform("RF/example images/android/body/stand/uhl/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_uhr": {"image":Transform("RF/example images/android/body/stand/uhr/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_hl": {"image":Transform("RF/example images/android/body/stand/hl/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_hr": {"image":Transform("RF/example images/android/body/stand/hr/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_d": {"image":Transform("RF/example images/android/body/stand/d/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_dhl": {"image":Transform("RF/example images/android/body/stand/dhl/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "stand_dhr": {"image":Transform("RF/example images/android/body/stand/dhr/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+
+                    "walk_u": {"image":"android_walk_u", "xoff":0,"yoff":0}, ## WALK
+                    "walk_uhl": {"image":"android_walk_uhl", "xoff":0,"yoff":0}, ## WALK
+                    "walk_uhr": {"image":"android_walk_uhr", "xoff":0,"yoff":0}, ## WALK
+                    "walk_hl": {"image":"android_walk_hl", "xoff":0,"yoff":0}, ## WALK
+                    "walk_hr": {"image":"android_walk_hr", "xoff":0,"yoff":0}, ## WALK
+                    "walk_d": {"image":"android_walk_d", "xoff":0,"yoff":0}, ## WALK
+                    "walk_dhl": {"image":"android_walk_dhl", "xoff":0,"yoff":0}, ## WALK
+                    "walk_dhr": {"image":"android_walk_dhr", "xoff":0,"yoff":0}, ## WALK
+
+                }
+
+
+
+## directional_mode = "1" and directional_mode = "free" ##
+default android_lib = {
+                    "stand": {"image":Transform("RF/example images/android/body/stand/u/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+                    "idle": {"image":Transform("RF/example images/android/body/stand/u/0.png",zoom=1.0), "xoff":0,"yoff":0}, ## STAND
+
+                }
+
+
+
+
+## INTERACTIVE LINE ## -- 01
+~~ If you look at start_example.rpy you'll find a defined class called interactive_line
+
+-- default interactive_line = InteractiveRouteDisplayable(lines=[], width=2)
+
+~~ This here is used to create/edit route lines. Add this to a screen to edit routes. I already created a option to start creating in the
+label start_example which jumps to a screen called editor_world which has interactive line and an example test_follower. This also has the
+controls of the editor so I recommend you view this first to see how to use the editor.
+
+~~ After you create the route, make sure to save it because it will not auto save your changes, once you export it will save the route as a text file.
+Copy what's in that text file, and change the name of the route and boom you have the route defined.
+
+~~ Last thing is, if you want to make the route along an image, all you need to do is add the image to the editor_world below the classes like below.
+
+////////////////////////////////////////////////////////////////////////////////
+-- add Solid("#262626") alpha 1.0
+
+[[   ADD IMAGE HERE   ]]
+
+-- add interactive_line
+
+
+-- if follower_show:
+      add test_follower
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+## DROPPING INTERACT POINTS ## -- 02
+~~ In the editor another thing you can do is drop interact points. These points when passed will jump to the specified label that you assign it.
+
+~~ After youre done, export the interact points, copy/paste then define the interact point list.
+
+////////////////////////////////////////////////////////////////////////////////
+default example_interact_points = [
+    {'name': 'point_1', 'point': (1637.510916459668, 536.7044058046804), 'label': 'wrench_grab', 'active': True, 'detected': False},
+    {'name': 'point_2', 'point': (675.2557598324413, 747.6416104258785), 'label': 'stop_sign', 'active': True, 'detected': False},
+    {'name': 'point_3', 'point': (338.8728287308628, 168.95759049935612), 'label': 'light_toggle', 'active': True, 'detected': False}
+]
+////////////////////////////////////////////////////////////////////////////////
+
+~~ Look above, there are different variables inside the interact point. . .
+ ● 'name': The name of the point
+ ● 'point': The points coordinates
+ ● 'label': The label the point will jump to when
+ ● 'active': The label is active, so it can be interacted with, you can set this to False to have it deactivated until its changed
+ ● 'detected': This is for the system itself, do not alter this. System looks at this so the point isn't being jumped to a million times when standing on it.
+
+
+
+## DEFINING ROUTE ## -- 03
+~~ Inside start_example.rpy I created a route line.
+
+-- default rl = RouteLines(lines=[], width=2)
+
+~~ The reason to use the class RouteLines instead of the class InteractiveRouteDisplayable is
+RouteLines specifically is used for in-game routes, it only calls and renders from the created defined list of points/lines, saving system resources
+saving the framerate.
+
+
+
+## DEFINING FOLLOWER ## -- 04
+~~ Another class thats essential is the follower itself. You'll see this
+
+-- default follower = FollowerDisplayable(Follower(x=100, y=100, speed=400, route=rl, img_id=android_lib))
+
+~~ I will break down what are variables you can initialize aka alter when defining.
+
+////////////////////////////////////////////////////////////////////////////////
+~~ This below is the default values that can be changed
+
+-- default follower = FollowerDisplayable(Follower(x=0, y=0, turn=True, free_movement=True, directional_mode="4", speed=200, route=None, img_id=None))
+
+~~ If these values are all correct, (with exception to the route and img_id) for example
+
+-- default follower = FollowerDisplayable(Follower(route=(DEFINED ROUTE HERE), img_id=(DEFINED IMAGE ID HERE)))
+
+
+ ● x=0 // x position of the follower - Change this to place the follower at its starting position
+
+ ● y=0 // y position of the follower - Change this to place the follower at its starting position
+
+ ● turn=True // Toggles if turn is on or off - turn meaning the image will auto flip( from xzoom=1.0 to xzoom=-1.0), when False, this will allow you to use separated left and right images
+
+ ● free_movement=True // Toggles if on click movement is on - If False follower cannot move unless set destination or set_button_destination function is called
+
+ ● directional_mode="4" // The direction mode you would like your follower to use. There are 4 different modes to use that alter the image in a specific way.
+ - - - - - "4" - only 4 image angles of movement - up, down, left, right
+ - - - - - "8" - only 8 image angles of movement - up, down, up_left, up_right, down_left, down_right, left, right
+ - - - - - "1" - only 1 image - does not alter the image in a direction, only uses one image
+ - - - - - "free" - only free angles of movement - moves in the direction of the route line, best for top down type of images
+
+ ● speed=200 // The speed at which the follower moves
+
+ ● route=None // ** WARNING MUST BE CHANGED - Put the defined route line you created here!
+
+ ● img_id=None // ** WARNING MUST BE CHANGED - Put the defined image library you created here!
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+~~ Since at this point you have it all set up. lets get started. Now a reminder is every function here can be setup also in
+a label. You just gotta be creative how you set it up. ALSO is you haven't downloaded the special examples, do so from my
+dropbox, link in the description of the Route Follower Template page on itch.io.
+
+
+
+## LOADING ROUTE ## -- 05
+~~ Ok so heres how you load the route you created, heres an example . . .
+
+- load_predefined_route(route, predefined_route)
+
+~~ This function above is used to load the pre defined route to the route class you defined
+
+-- $ load_predefined_route(rl, route_line_test)
+
+~~ Above is it in action, I am loading the predefined route (route_line_test) to the route (rl).
+And since in my example rl is the route used by the follower, the pre defined route will now be detected.
+You can always change these by using this function with other defined routes
+
+
+
+## LOADING INTERACT POINTS ## -- 06
+~~ Ok so heres how you load the interact points you created, heres an example . . .
+
+- self.load_interact_points(interact points)
+
+~~ This function above is used to load the interact points to the follower class you defined
+
+-- $ follower.load_interact_points(example_interact_points)
+
+~~ Above is it in action, I am loading the interact points (example_interact_points).
+You can always change these by using this function with other defined routes
+
+
+
+## FOLLOWER MOVEMENT/FUNCTIONS ## -- 07
+~~ Rest is very easy. There are 3 ways to move . . . when using it outside free_movement make sure to turn lock_plyr_cntrl True, to stop the point and click aspect.
+Or player can accidentally cancel the path you want them to go down in a cutscene.
+
+-- self.set_teleport(x,y,lines) // This teleports the player to the exact spot instantly.
+-- $ follower.set_teleport (962,507,follower.route.lines) // example found in start_example.rpy
+
+-- self.set_destination(x,y,lines) // This moves the player to the destination using coordinates(used in free movement, can be used in a function outside of free movement).
+-- $ follower.set_destination(956, 608, BOARD_MAP2) // example found in special_start_example.rpy
+
+-- self.set_button_destination(x,y,lines) // This moves the player to the destination using coordinates. BUT main difference being is this uses renpy buttons in order to move. Look below because its a little different.
+////////////////////////////////////////////////////////////////////////////////
+--  action [Function(follower.set_reach,"set_center"),SetVariable("lock_plyr_cntrl",True),Function(follower.set_button_destination, 962,507, follower.route.lines)] // example found in start_example.rpy
+
+~~ This action above does this -> Makes follower move to destination, when reached jumps to label.
+~~ Below I'll list out things you can use inside of these button actions . . .
+ ● set_reach function // sets the label that the follower jumps to when reaching the destination.
+ ● lock_plyr_cntrl variable change // if set to True, player will not be able to click to move around freely and cancel the path to the image buttons coordinates, if False the player can move freely and cancel the imagebuttons path.
+ ● set_button_destination function // Moves follower to the destination. Only use this function inside renpy buttons
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+~~ Last functions are like traffic light functions.
+ ● $ follower.stop_follower() // This stops follower completely, removing the path and destination.
+ ● $ follower.pause_follower() // This this pauses the followers route, it stores the path to be used later.
+ ● $ follower.play_follower() // This resumes the followers path that it stored.
+////////////////////////////////////////////////////////////////////////////////
+
+~~ These are essential to making cutscenes and other stuff. LASTLY there are more things that you can use for cutscenes . . .
+~~ ** MAKE SURE WHEN CHANGING STATE IT MUST BE A STATE INSIDE YOUR IMAGE LIBRARY
+
+////////////////////////////////////////////////////////////////////////////////
+ ● $ follower.reset_follower() // Very useful if you want your follower to change image library ids, this will reset the image to the current, state, direction, img_id.
+ ● $ follower.change_follower_dir(dir=None) // This is used to change the follower direction without adding a destination.
+ --- $ follower.change_follower_dir(dir="down") // example found in start_example.rpy
+ ● $ follower.change_follower_act(act=None) // This is used to make the follower change its state. Used to give follower other animations that are inside of the image library.
+ --- $ follower.change_follower_act(act="angry") // example found in start_example.rpy
+////////////////////////////////////////////////////////////////////////////////
+
+Thats it, hopefully this helps! Happy developing!
+- The Sauce
+
+
+
+
+
+
+
+
+
