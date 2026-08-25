@@ -1,3 +1,0 @@
-Ok, while I was working on examples in a rush I should've scaled the images better. FOR THE SPECIAL EXAMPLE IMAGES THEY ARE WAY TOO BIG!
-For your in game stuff I recommend you fit the size of the image to your game resolution. So that the image is at 1.0 zoom aka not zoomed or shrunk at all. 
-This could help with performance drastically!
