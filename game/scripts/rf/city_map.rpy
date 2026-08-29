@@ -75,13 +75,13 @@ default city_points = [
         "detected": False,
         "once": False,
         "map_sprite": "rf/loc_alley.png",
-        "radius": 140,
+        "radius": 47,
     },
 ]
 
 
 init python:
-    CITY_HIT_RADIUS = 140
+    CITY_HIT_RADIUS = 47
 
     def city_map_markers():
         """Like rf_map_markers, but reads city_follower.interact_points."""
@@ -110,7 +110,7 @@ init python:
         renpy.store.city_follower.load_interact_points(renpy.store.city_points)
         renpy.store.city_follower.set_teleport(240, 800, renpy.store.city_follower.route.lines)
         renpy.store.city_follower.reset_follower()
-        # Generous arrive-radius so landing next to a pin still fires.
+        # Arrive/click radius (~1/3 of the original 140) so nearby still counts.
         renpy.store.city_follower.interact_radius = CITY_HIT_RADIUS
 
     def city_go_to(name):
