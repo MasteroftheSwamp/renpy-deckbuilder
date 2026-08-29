@@ -1,3 +1,5 @@
+# Arena ladder. Fork game/scripts/templates/arena_fight.rpy and copy a block into levels.json.
+
 default levels = Levels()
 
 

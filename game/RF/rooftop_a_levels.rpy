@@ -1,3 +1,7 @@
+# RF map example. Fork game/scripts/templates/rf_level.rpy for a new map.
+# Do not edit follower_controller.rpy.
+# Live maps: rooftop_a_1 / rooftop_a_2 / rooftop_a_3 (jump rf_play).
+
 # ---------------------------------------------------------------------------
 # Rooftop A — three levels + standard RF UI
 # Maps are 1920x1080. Interact points use rooftop_a_follower (save works).

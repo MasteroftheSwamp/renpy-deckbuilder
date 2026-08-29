@@ -86,7 +86,7 @@ init python:
 
     def rf_followers():
         out = []
-        for name in ("rooftop_a_follower", "follower", "test_follower"):
+        for name in ("rooftop_a_follower", "follower", "test_follower", "city_follower"):
             fdisp = getattr(renpy.store, name, None)
             if fdisp is not None:
                 out.append(fdisp)

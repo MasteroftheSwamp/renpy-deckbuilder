@@ -1,3 +1,7 @@
+# Fight instances (one-off). Fork game/scripts/templates/fight_instance.rpy.
+# Live example: promoter_bout. Arena ladder lives in levels.json, not here.
+# Start with $ start_fight("id") or jump start_fight_instance.
+
 # ---------------------------------------------------------------------------
 # Fight instances — one-off battles (separate from the arena level ladder)
 # ---------------------------------------------------------------------------

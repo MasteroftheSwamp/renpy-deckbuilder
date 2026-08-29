@@ -1,5 +1,10 @@
 # ---------------------------------------------------------------------------
 # Out-of-battle HUD + tabbed player menu
+#
+# Stock map HUD (drop-in replacement for game/scripts/utils/hud.rpy) plus the
+# life-sim layer: a gold clock line at the top of the existing top-left frame,
+# and Hunger directly under Health in that same frame. Trained stats
+# (Vitality / Stamina / Strength) live on the Stats tab, not on the map HUD.
 # ---------------------------------------------------------------------------
 
 default menu_tab = "stats"
@@ -8,7 +13,7 @@ default menu_tab = "stats"
 screen hud():
     zorder 50
 
-    # ---- Top-left: health bar ----
+    # ---- Top-left: clock + health bar + hunger (same frame) ----
     frame:
         background Solid((0, 0, 0, 160))
         padding (12, 10)
@@ -18,6 +23,7 @@ screen hud():
 
         vbox:
             spacing 6
+            text "[life_sim.display_time()]" size 20 color "#ffcc44"
             text "Health" size 22 color "#cccccc"
             hbox:
                 spacing 10
@@ -28,6 +34,19 @@ screen hud():
                     left_bar Solid("#cc3333")
                     right_bar Solid("#442222")
                 text "[player.health]/[player.health_max]" size 22 yalign 0.5
+            text "Hunger" size 22 color "#cccccc"
+            hbox:
+                spacing 10
+                bar:
+                    value AnimatedValue(life_sim.hunger_display(), 100)
+                    xsize 220
+                    ysize 22
+                    left_bar Solid("#cc8833")
+                    right_bar Solid("#443322")
+                if life_sim.starving:
+                    text "[life_sim.hunger_display()]/100" size 22 yalign 0.5 color "#cc3333"
+                else:
+                    text "[life_sim.hunger_display()]/100" size 22 yalign 0.5
 
     # ---- Top-right: menu button ----
     imagebutton:
@@ -54,6 +73,55 @@ screen hud():
             vbox:
                 text "Quest" size 18 color "#aaaaaa"
                 text "[quests.active_title()]" size 24 color "#ffcc44"
+
+    # DEBUG jumps (remove later)
+    vbox:
+        xalign 0.0
+        yalign 1.0
+        offset (20, -20)
+        spacing 8
+        textbutton "Window lane":
+            action Jump("window_lane")
+            text_size 20
+            text_color "#eeeeee"
+            background Solid((0, 0, 0, 160))
+            hover_background Solid("#0099cc")
+            padding (12, 8)
+        textbutton "Cover lane":
+            action Jump("cover_lane")
+            text_size 20
+            text_color "#eeeeee"
+            background Solid((0, 0, 0, 160))
+            hover_background Solid("#0099cc")
+            padding (12, 8)
+        textbutton "Follower states":
+            action Jump("follower_states_demo")
+            text_size 20
+            text_color "#eeeeee"
+            background Solid((0, 0, 0, 160))
+            hover_background Solid("#0099cc")
+            padding (12, 8)
+        textbutton "Life sim demo":
+            action Jump("life_sim_demo")
+            text_size 20
+            text_color "#eeeeee"
+            background Solid((0, 0, 0, 160))
+            hover_background Solid("#0099cc")
+            padding (12, 8)
+        textbutton "Templates":
+            action Jump("template_index")
+            text_size 20
+            text_color "#eeeeee"
+            background Solid((0, 0, 0, 160))
+            hover_background Solid("#0099cc")
+            padding (12, 8)
+        textbutton "City map":
+            action Jump("city_map")
+            text_size 20
+            text_color "#eeeeee"
+            background Solid((0, 0, 0, 160))
+            hover_background Solid("#0099cc")
+            padding (12, 8)
 
 
 # ---------------------------------------------------------------------------
@@ -136,12 +204,19 @@ screen menu_tab_button(tab_id, label, icon):
 
 
 screen menu_tab_stats():
+    $ _hunger_colour = "#cc3333" if life_sim.starving else "#cc8833"
     vbox:
         spacing 18
         text "Character Stats" size 32
 
         use menu_stat_row("Health", player.health, player.health_max, "#cc3333")
+        use menu_stat_row("Hunger", life_sim.hunger_display(), 100, _hunger_colour)
         use menu_stat_row("Energy", player.energy, player.energy_max, "#66aadd")
+
+        text "Vitality: [life_sim.stats.vitality]" size 28
+        text "Stamina: [life_sim.stats.stamina]" size 28
+        text "Strength: [life_sim.stats.strength]" size 28
+        text "Attack multiplier: ×[life_sim.stats.attack_multiplier]" size 24 color "#aaaaaa"
 
         null height 10
         text "Money: $[money]" size 28

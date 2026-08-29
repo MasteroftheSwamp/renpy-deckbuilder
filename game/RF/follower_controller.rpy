@@ -725,11 +725,16 @@ init python:
             if move_dist == 0:
                 return
 
-            detection_radius = 10  # Increased from 5 to account for higher speeds; adjust as needed
-
+            # Default 10 keeps rooftop tight. City pins set point["radius"]
+            # or follower.interact_radius for a bigger trigger.
             for point_data in self.interact_points:
                 if not point_data.get('active', True):  # Skip if not active
                     continue
+                detection_radius = float(
+                    point_data.get("radius")
+                    or getattr(self, "interact_radius", None)
+                    or 10
+                )
                 point_pos = point_data["point"]
                 point_x, point_y = point_pos
 

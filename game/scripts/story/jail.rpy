@@ -1,3 +1,7 @@
+# VN example. Fork game/scripts/templates/vn_scene.rpy
+# Pattern: hide leftover battle UI, scene, show_hud, Character + dialogue + menu.
+# Live label: jail (lose-state cell). Intro is in start.rpy.
+
 label jail:
 
     # Clear any leftover battle UI
