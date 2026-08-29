@@ -6,9 +6,9 @@
 # Does not patch follower_controller.rpy. Playable city example of a
 # click-to-pathfind overworld with location icons (not the rooftop android).
 #
-# Walks spend life-sim time. On a valid path, note_travel stashes minutes
-# from pixel length (15-minute steps, min 15, ~800 px per hour). Time and
-# hunger jump when the walk arrives or a pin fires — not a live clock.
+# Walks spend life-sim CLOCK only (no hunger). note_travel stashes minutes
+# from pixel length (15-minute steps, min 15, ~800 px per hour). Hunger
+# drops when you train, or when you return to this map after a location.
 #
 # HOW TO ADD ANOTHER LOCATION ICON
 #   1. Drop a pin PNG in game/images/rf/ (transparent bg, ~48–72px). Distinct
@@ -69,6 +69,9 @@ default city_token_lib = {
 default city_follower = FollowerDisplayable(
     Follower(turn=True, directional_mode="1", speed=350, route=city_rl, img_id=city_token_lib)
 )
+
+# Set when leaving for a location; city_map applies finish_activity on return.
+default city_return_activity = None
 
 default city_points = [
     {
@@ -164,6 +167,16 @@ init python:
             out.append((_pt, spr))
         return out
 
+    def city_apply_return():
+        """Hunger + scene hours when coming back from a completed location."""
+        act = getattr(renpy.store, "city_return_activity", None)
+        if not act:
+            return
+        renpy.store.city_return_activity = None
+        ls = _city_life_sim()
+        if ls is not None:
+            ls.finish_activity(act)
+
     def city_load():
         city_wrap_time(renpy.store.city_follower.follower)
         load_predefined_route(renpy.store.city_rl, renpy.store.city_route)
@@ -200,6 +213,7 @@ label city_map:
     hide screen test_world
     hide screen editor_world
     hide screen city_rf_map
+    $ city_apply_return()
     $ city_load()
     show screen city_rf_map
     $ renpy.pause(modal=False, hard=True)
@@ -263,6 +277,7 @@ label city_travel_alley:
             hide screen city_rf_map
             hide screen rf_map
             window hide
+            $ city_return_activity = "alley"
             jump rooftop_a_1
         "No":
             window hide

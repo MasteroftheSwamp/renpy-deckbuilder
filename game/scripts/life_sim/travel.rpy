@@ -23,10 +23,10 @@
 #   3. Follower.set_teleport:
 #          life_sim.cancel_travel()      # clear pending, do not apply
 #
-#   4. Scenario labels (alley): at the end of the scene, BEFORE jumping
-#      back to the city:
+#   4. Scenario labels (alley): when RETURNING to the city map after
+#      completing the location (not on the walk itself):
 #          $ life_sim.finish_activity("alley")
-#      Walking there is extra travel time on top of this fixed duration.
+#      Hunger moves here and when training. Map travel is clock-only.
 #
 # Inside init-python Follower methods, use renpy.store.life_sim if the
 # bare name is not in scope.

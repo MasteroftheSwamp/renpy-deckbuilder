@@ -86,7 +86,7 @@ init python:
             return self.pending_minutes
 
         def commit_travel(self, dest=None):
-            """Advance clock + hunger by pending minutes, then clear pending."""
+            """Advance clock by pending minutes. Map walks do not drain hunger."""
             if dest is not None:
                 self.location = dest
             pending = int(self.pending_minutes or 0)
@@ -97,14 +97,13 @@ init python:
                     "hunger_before": self.hunger.value,
                     "hunger_after": self.hunger.value,
                 }
-            result = self._advance_minutes(pending)
+            result = self._advance_minutes(pending, hunger_rate=0)
             self._log(
                 "Walked to {} · {}".format(
                     NODE_LABELS.get(self.location, self.location),
                     format_duration(result["minutes"]),
                 )
             )
-            self._log_hunger(result["hunger_before"], result["hunger_after"])
             return result
 
         def cancel_travel(self):
