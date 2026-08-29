@@ -6,6 +6,10 @@
 # Does not patch follower_controller.rpy. Playable city example of a
 # click-to-pathfind overworld with location icons (not the rooftop android).
 #
+# Walks spend life-sim time. On a valid path, note_travel stashes minutes
+# from pixel length (15-minute steps, min 15, ~800 px per hour). Time and
+# hunger jump when the walk arrives or a pin fires — not a live clock.
+#
 # HOW TO ADD ANOTHER LOCATION ICON
 #   1. Drop a pin PNG in game/images/rf/ (transparent bg, ~48–72px). Distinct
 #      from rf/city_player.png.
@@ -83,6 +87,64 @@ default city_points = [
 init python:
     CITY_HIT_RADIUS = 47
 
+    def _city_life_sim():
+        return getattr(renpy.store, "life_sim", None)
+
+    def _city_note_travel(follower):
+        ls = _city_life_sim()
+        if ls is None:
+            return
+        if getattr(follower, "path_active", False) and getattr(follower, "route_points", None):
+            ls.note_travel(follower.route_points)
+        else:
+            ls.cancel_travel()
+
+    def _city_commit_travel():
+        ls = _city_life_sim()
+        if ls is None:
+            return
+        ls.commit_travel()
+
+    def city_wrap_time(follower):
+        """Instance wrap so only the city token spends hours. Rooftop stays free."""
+        if follower is None or getattr(follower, "_city_time_wrapped", False):
+            return
+        follower._city_time_wrapped = True
+
+        _set_d = follower.set_destination
+        def _city_set_destination(dest_x, dest_y, lines):
+            _set_d(dest_x, dest_y, lines)
+            _city_note_travel(follower)
+        follower.set_destination = _city_set_destination
+
+        _set_b = follower.set_button_destination
+        def _city_set_button_destination(dest_x, dest_y, lines):
+            _set_b(dest_x, dest_y, lines)
+            _city_note_travel(follower)
+        follower.set_button_destination = _city_set_button_destination
+
+        _tp = follower.set_teleport
+        def _city_set_teleport(x, y, lines):
+            ls = _city_life_sim()
+            if ls is not None:
+                ls.cancel_travel()
+            _tp(x, y, lines)
+        follower.set_teleport = _city_set_teleport
+
+        _jump = follower.jump_interact_point
+        def _city_jump_interact_point():
+            _city_commit_travel()
+            _jump()
+        follower.jump_interact_point = _city_jump_interact_point
+
+        _upd = follower.update
+        def _city_update(dt, route):
+            had_path = bool(getattr(follower, "path", None))
+            _upd(dt, route)
+            if had_path and not getattr(follower, "path", None):
+                _city_commit_travel()
+        follower.update = _city_update
+
     def city_map_markers():
         """Like rf_map_markers, but reads city_follower.interact_points."""
         fdisp = getattr(renpy.store, "city_follower", None)
@@ -103,6 +165,7 @@ init python:
         return out
 
     def city_load():
+        city_wrap_time(renpy.store.city_follower.follower)
         load_predefined_route(renpy.store.city_rl, renpy.store.city_route)
         for _pt in renpy.store.city_points:
             if not _pt.get("once") or _pt.get("active", True):
