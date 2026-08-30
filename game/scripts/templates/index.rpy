@@ -52,5 +52,8 @@ label template_index:
         "City map":
             jump city_map
 
+        "Vespera patrol":
+            jump vespera_patrol
+
         "Back to rooftop":
             jump rooftop_a_1

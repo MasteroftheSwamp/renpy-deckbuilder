@@ -1,6 +1,9 @@
 label lose:
 
     $ levels.end()
+    $ _fight_lose = None
+    if battle_mode == "instance":
+        $ _fight_lose = fight_on_lose_label()
     $ clear_fight_mode()
 
     hide screen player_end_turn
@@ -16,6 +19,10 @@ label lose:
     $ renpy.scene(layer="enemies")
     $ renpy.scene(layer="fx")
     $ player.hide()
+
+    # Fight-instance override (vespera_capture, etc.). Skip generic jail.
+    if _fight_lose not in (None, "lose"):
+        jump expression _fight_lose
 
     # Resolve opponent name + which pre-declared side bust to use
     python:

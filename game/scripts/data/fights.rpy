@@ -75,6 +75,11 @@ init python:
         data = FIGHTS.get(fid) or {}
         return data.get("on_win", "rooftop_a_1")
 
+    def fight_on_lose_label():
+        fid = getattr(renpy.store, "current_fight_id", None)
+        data = FIGHTS.get(fid) or {}
+        return data.get("on_lose", "lose")
+
 
 label start_fight_instance(fight_id):
     $ battle_mode = "instance"

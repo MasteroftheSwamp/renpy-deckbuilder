@@ -11,8 +11,8 @@ label start:
     # HUD visible from the very beginning (overworld + intro)
     $ show_hud()
 
-    # Enter the route-finder overworld
-    jump rooftop_a_1
+    # Enter the Vespera patrol slice (Templates HUD still jumps template_index)
+    jump vespera_patrol
 
 
 label intro:
