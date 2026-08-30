@@ -47,13 +47,13 @@ init 1 python:
 
     if "vespera_ambush" not in FIGHTS:
         FIGHTS["vespera_ambush"] = {
-            "scene": "bg plain",
+            "scene": "bg rooftop night",
             "on_win": "vespera_patrol",
             "on_lose": "vespera_capture",
             "enemies": [
                 {
                     "name": "Dr. Hale",
-                    "image": "boy",
+                    "image": "hale",
                     "health": 16,
                     "actions": [
                         {"say": "{name} flicks a suppressor cuff from his sleeve."},
@@ -136,7 +136,7 @@ label vespera_patrol:
         $ lock_plyr_cntrl = False
         $ renpy.scene(layer="enemies")
         $ renpy.scene(layer="fx")
-        scene bg plain with fade
+        scene bg rooftop night with fade
         $ show_hud()
         show vespera stand at center with dissolve
         "Night patrol. Elena Voss — twenty-six, violet suit, gold mask. Walk the roof."
@@ -152,7 +152,7 @@ label vespera_lookout:
     $ lock_plyr_cntrl = True
 
     if vespera_suit_damaged:
-        show screen rf_cinematic("vespera capture stand", dim=0.55, zoom=1.0)
+        show screen rf_cinematic("vespera damaged", dim=0.55, zoom=1.0)
         "The gold star clasp hangs by a thread. The violet leotard is split at the hip and over her ribs."
         vespera "Still me. Still twenty-six. Suit’s a wreck — I’m not."
         "Wind finds every new tear. She keeps the mask on anyway."

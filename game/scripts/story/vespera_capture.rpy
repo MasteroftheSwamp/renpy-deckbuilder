@@ -23,7 +23,7 @@ label vespera_capture:
     $ renpy.scene(layer="fx")
     $ player.hide()
 
-    scene bg defeat with fade
+    scene bg rooftop night with fade
 
     $ player.health = max(1, int(player.health_max * 0.1))
     $ show_hud()
@@ -35,6 +35,7 @@ label vespera_capture:
     dr_hale "Heart rate spiking. Good. Stay awake, Vespera — I want you to feel the cuffs seat."
 
     hide vespera
+    scene bg lab with fade
     show vespera capture struggle at center with dissolve
 
     "White sleeves. Steel. He wrenches her gauntlets together. The lock bites over the gold stars on her wrists."
