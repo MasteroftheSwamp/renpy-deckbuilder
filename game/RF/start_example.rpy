@@ -25,10 +25,10 @@ default route_line_test = [ ## SAVED ROUTE FROM EDITOR ##
     {'points': [[382, 529], [491, 473]], 'color': '#FF0000', 'editing': False, 'connected': False}
 ]
 default interactive_line = InteractiveRouteDisplayable(lines=[], width=2)
-default test_follower = FollowerDisplayable(Follower(speed=400, route=interactive_line, img_id=android_lib))
+default test_follower = FollowerDisplayable(Follower(speed=400, route=interactive_line, img_id=vespera_lib))
 
 default rl = RouteLines(lines=[], width=2)
-default follower = FollowerDisplayable(Follower(turn=True, speed=400, route=rl, img_id=android_lib))
+default follower = FollowerDisplayable(Follower(turn=True, speed=400, route=rl, img_id=vespera_lib))
 default persistent.dev_note = True
 label start_example:
     $ selected_editor = "world"

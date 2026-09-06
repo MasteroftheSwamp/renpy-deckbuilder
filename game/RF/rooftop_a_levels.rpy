@@ -62,7 +62,7 @@ default rooftop_a_route_3 = [
 
 default rooftop_a_rl = RouteLines(lines=[], width=2)
 default rooftop_a_follower = FollowerDisplayable(
-    Follower(turn=True, speed=400, route=rooftop_a_rl, img_id=android_lib)
+    Follower(turn=True, speed=400, route=rooftop_a_rl, img_id=vespera_lib)
 )
 
 default current_rf_level = "rooftop_a_2"
