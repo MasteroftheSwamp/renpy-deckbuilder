@@ -39,12 +39,18 @@ init python:
             if image:
                 self.image_name = image
                 if image == "player":
-                    hover_path = "images/player/BattleSprites/DarkDameBattle-Hover.png"
+                    hover_path = "images/vespera/battle/hover.png"
                 else:
                     hover_path = f"images/enemies/{image} hover.png"
                 width, height = renpy.image_size(hover_path)
-                self.width = width
-                self.height = height
+                # Player battle tags use Transform(..., ysize=700); size the
+                # layout box to the on-screen sprite, not the raw PNG pixels.
+                if image == "player":
+                    self.height = 700
+                    self.width = int(round(width * (700.0 / float(height)))) if height else 700
+                else:
+                    self.width = width
+                    self.height = height
 
             self.health = self.health_max = kwargs.get("health", 0)
             self.energy = self.energy_max = kwargs.get("energy", 0)
