@@ -1,193 +1,193 @@
 ## Vespera RF cutout sprite library
 ## Auto-generated from game/RF/vespera/{posture}/{idle|walk}/{u|d|h|hl}/NN.png
-## zoom=0.22 (crouch 0.17); walk pause 0.08; idle pause 0.10; xoff/yoff 0 (blit already centers feet)
+## zoom=0.22 (crouch 0.16); walk pause 0.08; idle pause 0.10; xoff/yoff 0 (blit already centers feet)
 
 image vespera_crouch_idle_d:
-    Transform("RF/vespera/crouch/idle/d/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/00.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/01.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/02.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/03.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/04.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/05.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/06.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/07.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/08.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/09.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/10.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/11.png", zoom=0.16)
     pause 0.10
     repeat
 
 image vespera_crouch_idle_h:
-    Transform("RF/vespera/crouch/idle/h/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/00.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/01.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/02.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/03.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/04.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/05.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/06.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/07.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/08.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/09.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/10.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/11.png", zoom=0.16)
     pause 0.10
     repeat
 
 image vespera_crouch_idle_hl:
-    Transform("RF/vespera/crouch/idle/hl/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/00.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/01.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/02.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/03.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/04.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/05.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/06.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/07.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/08.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/09.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/10.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/hl/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/hl/11.png", zoom=0.16)
     pause 0.10
     repeat
 
 image vespera_crouch_idle_u:
-    Transform("RF/vespera/crouch/idle/u/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/00.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/01.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/02.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/03.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/04.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/05.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/06.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/07.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/08.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/09.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/10.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/11.png", zoom=0.16)
     pause 0.10
     repeat
 
 image vespera_crouch_walk_d:
-    Transform("RF/vespera/crouch/walk/d/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/00.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/01.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/02.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/03.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/04.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/05.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/06.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/07.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/08.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/09.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/10.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/d/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/d/11.png", zoom=0.16)
     pause 0.08
     repeat
 
 image vespera_crouch_walk_h:
-    Transform("RF/vespera/crouch/walk/h/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/00.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/01.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/02.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/03.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/04.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/05.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/06.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/07.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/08.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/09.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/10.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/h/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/h/11.png", zoom=0.16)
     pause 0.08
     repeat
 
 image vespera_crouch_walk_u:
-    Transform("RF/vespera/crouch/walk/u/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/00.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/01.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/02.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/03.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/04.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/05.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/06.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/07.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/08.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/09.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/10.png", zoom=0.16)
     pause 0.08
-    Transform("RF/vespera/crouch/walk/u/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/walk/u/11.png", zoom=0.16)
     pause 0.08
     repeat
 
@@ -838,83 +838,83 @@ image vespera_normal_stand_d:
     repeat
 
 image vespera_crouch_stand_u:
-    Transform("RF/vespera/crouch/idle/u/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/00.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/01.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/02.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/03.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/04.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/05.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/06.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/07.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/08.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/09.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/10.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/u/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/u/11.png", zoom=0.16)
     pause 0.10
     repeat
 
 image vespera_crouch_stand_h:
-    Transform("RF/vespera/crouch/idle/h/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/00.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/01.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/02.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/03.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/04.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/05.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/06.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/07.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/08.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/09.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/10.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/h/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/h/11.png", zoom=0.16)
     pause 0.10
     repeat
 
 image vespera_crouch_stand_d:
-    Transform("RF/vespera/crouch/idle/d/00.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/00.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/01.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/01.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/02.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/02.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/03.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/03.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/04.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/04.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/05.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/05.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/06.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/06.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/07.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/07.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/08.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/08.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/09.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/09.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/10.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/10.png", zoom=0.16)
     pause 0.10
-    Transform("RF/vespera/crouch/idle/d/11.png", zoom=0.17)
+    Transform("RF/vespera/crouch/idle/d/11.png", zoom=0.16)
     pause 0.10
     repeat
 
