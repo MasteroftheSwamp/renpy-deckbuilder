@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------------
 # Template index — designer jump hub (debug HUD → Templates).
-# Copy files from this folder; do not replace the live examples they point at.
+# Copy a file from this folder; do not replace the live examples it points at.
+# Assets (images, audio) live under game/images/ and game/audio/ — not here.
 # ---------------------------------------------------------------------------
 
 label template_index:
 
     $ quick_menu = False
 
-    # Leave the overworld map behind (same pattern as intro)
     hide screen rf_map
     hide screen rf_cinematic
     hide screen test_world
@@ -29,24 +29,39 @@ label template_index:
 
     $ show_hud()
 
-    "Designer templates — copy a file, fill in the fields, play."
+    "Level templates — copy a file, fill FILL ME, play. Assets stay in game/images/."
 
     menu:
-        "What do you want to author?"
+        "What kind of level?"
 
-        "VN scene":
+        "Standard Ren'Py dialogue":
             jump template_vn
 
-        "RF map":
-            jump template_rf
+        "RF — single image":
+            jump template_rf_single
 
-        "Fight instance":
-            jump template_fight
+        "RF — chain of images":
+            jump template_rf_chain
 
-        "Arena fight":
-            jump template_arena
+        "Single battle":
+            jump template_battle_single
 
-        "Cover lane":
+        "Battle arena":
+            jump template_battle_arena
+
+        "Extras…":
+            jump template_index_extras
+
+        "Back to rooftop":
+            jump rooftop_a_1
+
+
+label template_index_extras:
+
+    menu:
+        "Extra demos"
+
+        "Cover lane (stealth)":
             jump cover_lane
 
         "City map":
@@ -55,5 +70,5 @@ label template_index:
         "Vespera patrol":
             jump vespera_patrol
 
-        "Back to rooftop":
-            jump rooftop_a_1
+        "Back":
+            jump template_index

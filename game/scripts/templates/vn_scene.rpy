@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------
-# VN scene template — a visual-novel beat.
+# STANDARD REN'PY DIALOGUE — a visual-novel beat.
 #
 # A VN beat is: scene + character + dialogue + menu + jump.
 # Duplicate jail / intro as a NEW scene. Do not replace jail.rpy.
