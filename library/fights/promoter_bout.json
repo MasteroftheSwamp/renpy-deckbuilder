@@ -1,0 +1,7 @@
+{
+  "id": "promoter_bout",
+  "on_win": "rooftop_a_1",
+  "on_lose": "lose",
+  "defined_in": "game/scripts/data/fights.rpy",
+  "start": "$ start_fight(\"promoter_bout\")"
+}

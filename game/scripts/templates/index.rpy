@@ -52,7 +52,10 @@ label template_index:
         "Extras…":
             jump template_index_extras
 
-        "Back to rooftop":
+        "Rooftop A chain (library)":
+            jump rooftop_a
+
+        "Back to rooftop room 1":
             jump rooftop_a_1
 
 

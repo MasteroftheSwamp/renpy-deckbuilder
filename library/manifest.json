@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "branch": "buildalpha",
+  "notes": "Stable IDs a story bot may use. Art lives under game/images/; this file is the catalog only.",
+  "characters": [
+    {
+      "id": "vespera",
+      "display_name": "Vespera (Elena Voss)",
+      "file": "library/characters/vespera.json",
+      "rf_img_id": "vespera_lib",
+      "battle_tags": "player *",
+      "images": {
+        "battle_dir": "game/images/vespera/battle/",
+        "rf_dir": "game/RF/vespera/",
+        "token": "game/images/vespera/token.png"
+      }
+    },
+    {
+      "id": "hale",
+      "display_name": "Dr. Hale",
+      "file": "library/characters/hale.json",
+      "enemy_image": "hale",
+      "images": {
+        "enemy": "game/images/enemies/hale.png",
+        "hover": "game/images/enemies/hale hover.png"
+      }
+    }
+  ],
+  "rf_rooms": [
+    {
+      "id": "rooftop_a_1",
+      "file": "library/rf_rooms/rooftop_a_1.json",
+      "bg": "maps/rooftop-a/map_rooftop-a_1.jpg",
+      "route": "rooftop_a_route_1",
+      "points": "rooftop_a_points_1"
+    },
+    {
+      "id": "rooftop_a_2",
+      "file": "library/rf_rooms/rooftop_a_2.json",
+      "bg": "maps/rooftop-a/map_rooftop-a_2.jpg",
+      "route": "rooftop_a_route_2",
+      "points": null
+    },
+    {
+      "id": "rooftop_a_3",
+      "file": "library/rf_rooms/rooftop_a_3.json",
+      "bg": "maps/rooftop-a/map_rooftop-a_3.jpg",
+      "route": "rooftop_a_route_3",
+      "points": null
+    },
+    {
+      "id": "vespera_patrol",
+      "file": "library/rf_rooms/vespera_patrol.json",
+      "bg": "maps/rooftop-a/map_rooftop-a_1.jpg",
+      "route": "rooftop_a_route_1",
+      "points": "vespera_points"
+    }
+  ],
+  "rf_chains": [
+    {
+      "id": "rooftop_a",
+      "file": "library/rf_chains/rooftop_a.json",
+      "entry": "rooftop_a_1",
+      "rooms": ["rooftop_a_1", "rooftop_a_2", "rooftop_a_3"],
+      "enter_label": "rooftop_a"
+    }
+  ],
+  "fights": [
+    {
+      "id": "promoter_bout",
+      "file": "library/fights/promoter_bout.json",
+      "engine": "FIGHTS in game/scripts/data/fights.rpy",
+      "on_win": "rooftop_a_1",
+      "on_lose": "lose"
+    },
+    {
+      "id": "vespera_ambush",
+      "file": "library/fights/vespera_ambush.json",
+      "engine": "FIGHTS in game/scripts/rf/vespera_patrol.rpy",
+      "on_win": "vespera_patrol",
+      "on_lose": "vespera_capture"
+    },
+    {
+      "id": "template_bout",
+      "file": "library/fights/template_bout.json",
+      "engine": "FIGHTS in game/scripts/templates/battle_single.rpy",
+      "on_win": "rooftop_a_1",
+      "on_lose": "lose"
+    }
+  ],
+  "vn_beats": [
+    {
+      "id": "template_vn",
+      "label": "template_vn",
+      "file": "game/scripts/templates/vn_scene.rpy"
+    },
+    {
+      "id": "vespera_capture",
+      "label": "vespera_capture",
+      "file": "game/scripts/story/vespera_capture.rpy"
+    }
+  ],
+  "story_bot_rules": [
+    "Only use ids listed in this manifest.",
+    "Do not invent image paths; point at listed assets.",
+    "RF: jump chain enter_label or set current_rf_level + jump rf_play.",
+    "Room swaps inside a chain: rf_chain_exit(room_id) or jump room label.",
+    "Battles: start_fight(fight_id); set on_win/on_lose to room or VN labels.",
+    "VN: jump or call a vn_beat label; return to a room enter label.",
+    "New rooms/fights: copy templates, then add an entry here."
+  ]
+}

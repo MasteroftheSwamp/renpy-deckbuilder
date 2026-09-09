@@ -5,7 +5,7 @@
 #
 # Engine: game/RF/follower_controller.rpy — DO NOT EDIT.
 # Reuses rooftop-a map 1 + rooftop_a_route_1 + rooftop_a_follower.
-# Registers as RF_ROOFTOP_A["vespera_patrol"] and wraps rf_load_rooftop.
+# Registers RF_ROOMS["vespera_patrol"] via library_loader.
 # ---------------------------------------------------------------------------
 
 define vespera = Character("Vespera", color="#b56cff")
@@ -39,11 +39,14 @@ default vespera_points = [
 
 
 init 1 python:
-    RF_ROOFTOP_A["vespera_patrol"] = {
-        "bg": "maps/rooftop-a/map_rooftop-a_1.jpg",
-        "route": "rooftop_a_route_1",
-        "start": (838.9285714285714, 950.3571428571428),
-    }
+    # Library registration — same map as rooftop_a_1, Vespera interact points.
+    rf_register_room(
+        "vespera_patrol",
+        bg="maps/rooftop-a/map_rooftop-a_1.jpg",
+        route="rooftop_a_route_1",
+        start=(838.9285714285714, 950.3571428571428),
+        points="vespera_points",
+    )
 
     if "vespera_ambush" not in FIGHTS:
         FIGHTS["vespera_ambush"] = {
@@ -87,44 +90,23 @@ init 1 python:
             ],
         }
 
-    _rf_load_rooftop_base = rf_load_rooftop
+    _rf_load_room_base = rf_load_room
 
+    def rf_load_room(level_id):
+        ok = _rf_load_room_base(level_id)
+        if level_id == "vespera_patrol":
+            try:
+                if getattr(renpy.store, "vespera_suit_damaged", False):
+                    renpy.store.rooftop_a_follower.set_posture("injured")
+                else:
+                    renpy.store.rooftop_a_follower.set_posture("normal")
+            except Exception:
+                pass
+        return ok
+
+    # Keep legacy name working
     def rf_load_rooftop(level_id):
-        if level_id != "vespera_patrol":
-            _rf_load_rooftop_base(level_id)
-            return
-
-        info = RF_ROOFTOP_A[level_id]
-        renpy.store.current_rf_level = level_id
-        route = getattr(renpy.store, info["route"])
-        start = info["start"]
-
-        load_predefined_route(renpy.store.rooftop_a_rl, route)
-        for _pt in renpy.store.vespera_points:
-            if not _pt.get("once") or _pt.get("active", True):
-                _pt["detected"] = False
-        renpy.store.rooftop_a_follower.load_interact_points(renpy.store.vespera_points)
-        renpy.store.rooftop_a_follower.set_teleport(
-            start[0], start[1], renpy.store.rooftop_a_follower.route.lines
-        )
-        renpy.store.rooftop_a_follower.reset_follower()
-
-        try:
-            if getattr(renpy.store, "vespera_suit_damaged", False):
-                renpy.store.rooftop_a_follower.set_posture("injured")
-            else:
-                renpy.store.rooftop_a_follower.set_posture("normal")
-        except Exception:
-            pass
-
-        load_predefined_route(renpy.store.interactive_line, route)
-        renpy.store.test_follower.load_interact_points(
-            renpy.store.rooftop_a_follower.follower.interact_points
-        )
-        renpy.store.test_follower.set_teleport(
-            start[0], start[1], renpy.store.test_follower.route.lines
-        )
-        renpy.store.test_follower.reset_follower()
+        return rf_load_room(level_id)
 
 
 label vespera_patrol:

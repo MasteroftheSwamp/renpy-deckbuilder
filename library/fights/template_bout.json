@@ -1,0 +1,7 @@
+{
+  "id": "template_bout",
+  "on_win": "rooftop_a_1",
+  "on_lose": "lose",
+  "defined_in": "game/scripts/templates/battle_single.rpy",
+  "start": "$ start_fight(\"template_bout\")"
+}

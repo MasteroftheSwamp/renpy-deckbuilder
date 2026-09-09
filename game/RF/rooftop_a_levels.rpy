@@ -1,6 +1,6 @@
 # RF map example. Fork game/scripts/templates/rf_level.rpy for a new map.
 # Do not edit follower_controller.rpy.
-# Live maps: rooftop_a_1 / rooftop_a_2 / rooftop_a_3 (jump rf_play).
+# Live maps: rooftop_a (chain) or rooftop_a_1 / _2 / _3. Library: RF_ROOMS / RF_CHAINS.
 
 # ---------------------------------------------------------------------------
 # Rooftop A — three levels + standard RF UI
@@ -69,6 +69,7 @@ default current_rf_level = "rooftop_a_2"
 
 
 init python:
+    # Legacy flat dict — kept for older call sites; RF_ROOMS is canonical.
     RF_ROOFTOP_A = {
         "rooftop_a_1": {
             "bg": "maps/rooftop-a/map_rooftop-a_1.jpg",
@@ -87,52 +88,8 @@ init python:
         },
     }
 
-    def rf_current_route():
-        info = RF_ROOFTOP_A[renpy.store.current_rf_level]
-        return getattr(renpy.store, info["route"])
-
-    def rf_current_start():
-        return RF_ROOFTOP_A[renpy.store.current_rf_level]["start"]
-
-    def rf_load_rooftop(level_id):
-        info = RF_ROOFTOP_A[level_id]
-        renpy.store.current_rf_level = level_id
-        route = getattr(renpy.store, info["route"])
-        start = info["start"]
-
-        # Play pathfinding route + the on-screen follower (owns interact points)
-        load_predefined_route(renpy.store.rooftop_a_rl, route)
-        if level_id == "rooftop_a_1":
-            # Reset detected flags so points can fire again on a fresh enter
-            for _p in renpy.store.rooftop_a_points_1:
-                if not _p.get("once") or _p.get("active", True):
-                    _p["detected"] = False
-            renpy.store.rooftop_a_follower.load_interact_points(renpy.store.rooftop_a_points_1)
-        else:
-            if not renpy.store.rooftop_a_follower.follower.interact_points:
-                renpy.store.rooftop_a_follower.load_interact_points([])
-
-        # Keep any points already on the follower when reloading same session;
-        # start fresh only if empty is desired — points list stays on follower.
-        renpy.store.rooftop_a_follower.set_teleport(
-            start[0], start[1], renpy.store.rooftop_a_follower.route.lines
-        )
-        renpy.store.rooftop_a_follower.reset_follower()
-
-        # Interactive editor route (node editing) — share the same point list
-        load_predefined_route(renpy.store.interactive_line, route)
-        # Point the editor follower at the SAME interact list object
-        renpy.store.test_follower.load_interact_points(
-            renpy.store.rooftop_a_follower.follower.interact_points
-        )
-        renpy.store.test_follower.set_teleport(
-            start[0], start[1], renpy.store.test_follower.route.lines
-        )
-        renpy.store.test_follower.reset_follower()
-
     def rf_save_interact_points():
         """Save from the follower that actually receives Ctrl+RMB drops."""
-        # Prefer rooftop follower; fall back to test_follower if it has more points
         a = renpy.store.rooftop_a_follower.follower.interact_points
         b = renpy.store.test_follower.follower.interact_points
         if b and len(b) > len(a):
@@ -143,6 +100,55 @@ init python:
     def rf_clear_interact_points():
         clear_interact_points(renpy.store.rooftop_a_follower)
         clear_interact_points(renpy.store.test_follower)
+
+    def rf_load_rooftop(level_id):
+        """Compatibility wrapper — prefers RF_ROOMS via rf_load_room."""
+        return rf_load_room(level_id)
+
+
+init 1 python:
+    # Promote rooftop rooms into the library (points only on room 1 for now).
+    rf_register_room(
+        "rooftop_a_1",
+        bg="maps/rooftop-a/map_rooftop-a_1.jpg",
+        route="rooftop_a_route_1",
+        start=(838.9285714285714, 950.3571428571428),
+        points="rooftop_a_points_1",
+    )
+    rf_register_room(
+        "rooftop_a_2",
+        bg="maps/rooftop-a/map_rooftop-a_2.jpg",
+        route="rooftop_a_route_2",
+        start=(841.0714285714286, 1006.0714285714286),
+        points=None,
+    )
+    rf_register_room(
+        "rooftop_a_3",
+        bg="maps/rooftop-a/map_rooftop-a_3.jpg",
+        route="rooftop_a_route_3",
+        start=(784.2857142857142, 992.1428571428571),
+        points=None,
+    )
+    rf_register_chain(
+        "rooftop_a",
+        entry="rooftop_a_1",
+        rooms=["rooftop_a_1", "rooftop_a_2", "rooftop_a_3"],
+        exits={
+            # Authors / story bot: interact labels call rf_chain_exit("rooftop_a_2") etc.
+            ("rooftop_a_1", "next"): "rooftop_a_2",
+            ("rooftop_a_2", "prev"): "rooftop_a_1",
+            ("rooftop_a_2", "next"): "rooftop_a_3",
+            ("rooftop_a_3", "prev"): "rooftop_a_2",
+        },
+    )
+
+
+
+label rooftop_a:
+    # Enter the rooftop_a chain at its entry room (library RF_CHAINS).
+    $ current_rf_chain = "rooftop_a"
+    $ current_rf_level = "rooftop_a_1"
+    jump rf_play
 
 
 label rooftop_a_1:
@@ -163,7 +169,7 @@ label rooftop_a_3:
 label rf_play:
     window hide
     $ show_hud()
-    $ rf_load_rooftop(current_rf_level)
+    $ rf_load_room(current_rf_level)
 
     hide screen rf_map
     hide screen test_world
@@ -178,13 +184,8 @@ screen rf_map:
     default follower_show = True
     default menu_hider = False
 
-    # Full-bleed background (images are 1920x1080)
-    if current_rf_level == "rooftop_a_2":
-        add "maps/rooftop-a/map_rooftop-a_2.jpg"
-    elif current_rf_level == "rooftop_a_3":
-        add "maps/rooftop-a/map_rooftop-a_3.jpg"
-    else:
-        add "maps/rooftop-a/map_rooftop-a_1.jpg"
+    # Full-bleed background from RF_ROOMS (1920x1080)
+    add rf_current_bg()
 
     # Route layer: interactive editor lines when Edit route is on
     if edit_route_menu:

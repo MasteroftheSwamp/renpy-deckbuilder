@@ -1,0 +1,17 @@
+{
+  "id": "rooftop_a",
+  "entry": "rooftop_a_1",
+  "rooms": [
+    "rooftop_a_1",
+    "rooftop_a_2",
+    "rooftop_a_3"
+  ],
+  "enter_label": "rooftop_a",
+  "exits": {
+    "rooftop_a_1.next": "rooftop_a_2",
+    "rooftop_a_2.prev": "rooftop_a_1",
+    "rooftop_a_2.next": "rooftop_a_3",
+    "rooftop_a_3.prev": "rooftop_a_2"
+  },
+  "how_to_swap": "From an interact label: $ rf_chain_exit('rooftop_a_2')"
+}

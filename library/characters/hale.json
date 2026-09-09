@@ -1,0 +1,10 @@
+{
+  "id": "hale",
+  "display_name": "Dr. Hale",
+  "enemy_image": "hale",
+  "images": {
+    "enemy": "game/images/enemies/hale.png",
+    "hover": "game/images/enemies/hale hover.png"
+  },
+  "voice_notes": "Calm clinical antagonist; uses cuffs / suppressors."
+}

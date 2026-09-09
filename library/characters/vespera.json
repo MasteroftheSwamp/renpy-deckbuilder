@@ -1,0 +1,39 @@
+{
+  "id": "vespera",
+  "display_name": "Vespera",
+  "full_name": "Elena Voss",
+  "age": 26,
+  "rf_img_id": "vespera_lib",
+  "battle": {
+    "tag_prefix": "player",
+    "dir": "game/images/vespera/battle/",
+    "available": [
+      "idle",
+      "idle_low",
+      "hover",
+      "hurt",
+      "attack",
+      "punch",
+      "kick",
+      "idle_burned",
+      "idle_shielded",
+      "idle_shielded_low",
+      "idle_vulnerable",
+      "idle_vulnerable_low",
+      "idle_weak_low"
+    ],
+    "ysize": 700
+  },
+  "rf": {
+    "dir": "game/RF/vespera/",
+    "postures": [
+      "normal",
+      "crouch",
+      "injured",
+      "handcuffed"
+    ],
+    "zoom_default": 0.22,
+    "zoom_crouch": 0.16
+  },
+  "voice_notes": "Confident masked heroine; capture/explicit scenes are on-screen adults 21+ only."
+}

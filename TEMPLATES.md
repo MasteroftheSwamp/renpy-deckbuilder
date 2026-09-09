@@ -5,7 +5,7 @@ Assets (backgrounds, sprites, audio) stay under `game/images/` / `game/audio/` â
 
 Jump **Templates** on the debug HUD (bottom-left) â†’ `template_index`.
 
-Branch for this pack: `level-templates` (playtest content stays on `vespera`).
+Branch for library assembly: `buildalpha`. Templates still live here; see [LIBRARY.md](LIBRARY.md) for the id catalog a story bot should read.
 
 | Kind | Template file | Jump | Live example |
 | --- | --- | --- | --- |

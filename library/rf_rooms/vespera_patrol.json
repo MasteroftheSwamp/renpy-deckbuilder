@@ -1,0 +1,12 @@
+{
+  "id": "vespera_patrol",
+  "bg": "maps/rooftop-a/map_rooftop-a_1.jpg",
+  "route_store": "rooftop_a_route_1",
+  "points_store": "vespera_points",
+  "start": [
+    838.9285714285714,
+    950.3571428571428
+  ],
+  "register_in": "game/scripts/rf/vespera_patrol.rpy",
+  "enter_label": "vespera_patrol"
+}

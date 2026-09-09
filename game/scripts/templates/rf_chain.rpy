@@ -41,10 +41,11 @@
 #           },
 #       }
 #
-# TODAY’S LOADER
-#   rf_load_rooftop(level_id) + RF_ROOFTOP_A uses flat room ids.
-#   Until a shared RF_LEVELS loader lands, register each room like rooftop_a_N
-#   and jump between them from exit interact points / labels.
+# RUNTIME LIBRARY (buildalpha)
+#   rf_register_room / rf_register_chain in game/RF/library_loader.rpy
+#   Enter: jump rooftop_a  or  $ rf_enter_chain("rooftop_a")
+#   Swap:  $ rf_chain_exit("rooftop_a_2")
+#   Catalog: library/manifest.json + LIBRARY.md
 #
 # ENGINE — do not edit follower_controller to add rooms.
 # ---------------------------------------------------------------------------

@@ -1,0 +1,7 @@
+{
+  "id": "vespera_ambush",
+  "on_win": "vespera_patrol",
+  "on_lose": "vespera_capture",
+  "defined_in": "game/scripts/rf/vespera_patrol.rpy",
+  "start": "$ start_fight(\"vespera_ambush\")"
+}

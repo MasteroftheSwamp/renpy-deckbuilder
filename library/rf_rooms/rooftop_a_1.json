@@ -1,0 +1,12 @@
+{
+  "id": "rooftop_a_1",
+  "bg": "maps/rooftop-a/map_rooftop-a_1.jpg",
+  "route_store": "rooftop_a_route_1",
+  "points_store": "rooftop_a_points_1",
+  "start": [
+    838.9285714285714,
+    950.3571428571428
+  ],
+  "register_in": "game/RF/rooftop_a_levels.rpy",
+  "enter_label": "rooftop_a_1"
+}
