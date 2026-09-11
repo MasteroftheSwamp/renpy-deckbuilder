@@ -32,3 +32,14 @@ $ print(rf_current_bg())          # bg path for current room
 
 Registered today: `rooftop_a_1`, `rooftop_a_2`, `rooftop_a_3`, `vespera_patrol`.  
 Chain: `rooftop_a` → enter label `rooftop_a`.
+
+## Hale dialogue art
+
+Abridged supporting-cast set under `game/images/hale/` (bust + full):
+
+`neutral`, `smug`, `clinical`, `angry`, `surprised`, `pleased`, `frustrated`
+
+- Side / say-box: `dr_hale smug "…"` (`Character` uses `image="hale"`)
+- Central: `show hale smug`
+- Battle poses remain under `game/images/enemies/hale/` (`hale idle`, `hale attack`, …)
+

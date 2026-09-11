@@ -59,6 +59,27 @@ image hale idle_vulnerable_low = Image("enemies/hale/idle_vulnerable_low.png")
 image hale idle_shielded = Image("enemies/hale/idle_shielded.png")
 image hale idle_shielded_low = Image("enemies/hale/idle_shielded_low.png")
 
+# Hale dialogue — abridged emotions (supporting cast). Busts = side images; full = centrals.
+# Usage later: dr_hale smug "…"  |  show hale smug
+# Emotions: neutral, smug, clinical, angry, surprised, pleased, frustrated
+image side hale = Image("hale/bust/neutral.png")
+image side hale neutral = Image("hale/bust/neutral.png")
+image side hale smug = Image("hale/bust/smug.png")
+image side hale clinical = Image("hale/bust/clinical.png")
+image side hale angry = Image("hale/bust/angry.png")
+image side hale surprised = Image("hale/bust/surprised.png")
+image side hale pleased = Image("hale/bust/pleased.png")
+image side hale frustrated = Image("hale/bust/frustrated.png")
+
+image hale neutral = Transform("hale/full/neutral.png", ysize=980)
+image hale smug = Transform("hale/full/smug.png", ysize=980)
+image hale clinical = Transform("hale/full/clinical.png", ysize=980)
+image hale angry = Transform("hale/full/angry.png", ysize=980)
+image hale surprised = Transform("hale/full/surprised.png", ysize=980)
+image hale pleased = Transform("hale/full/pleased.png", ysize=980)
+image hale frustrated = Transform("hale/full/frustrated.png", ysize=980)
+
+
 # Story backgrounds
 image bg rooftop night = Transform("vespera/bg_rooftop_night.jpg", xysize=(1920, 1080))
 image bg lab = Transform("vespera/bg_lab.jpg", xysize=(1920, 1080))

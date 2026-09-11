@@ -4,7 +4,22 @@
   "enemy_image": "hale",
   "images": {
     "enemy": "game/images/enemies/hale.png",
-    "hover": "game/images/enemies/hale hover.png"
+    "hover": "game/images/enemies/hale hover.png",
+    "dialogue_bust": "game/images/hale/bust/",
+    "dialogue_full": "game/images/hale/full/"
   },
-  "voice_notes": "Calm clinical antagonist; uses cuffs / suppressors."
+  "dialogue_emotions": [
+    "neutral",
+    "smug",
+    "clinical",
+    "angry",
+    "surprised",
+    "pleased",
+    "frustrated"
+  ],
+  "usage": {
+    "side": "dr_hale smug \"…\" (Character image=hale → side hale <emotion>)",
+    "center": "show hale smug"
+  },
+  "voice_notes": "Calm clinical antagonist; uses cuffs / suppressors. Supporting cast — abridged emotion set only."
 }
