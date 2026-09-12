@@ -84,6 +84,20 @@ image hale frustrated = Transform("hale/full/frustrated.png", ysize=980)
 image bg rooftop night = Transform("vespera/bg_rooftop_night.jpg", xysize=(1920, 1080))
 image bg lab = Transform("vespera/bg_lab.jpg", xysize=(1920, 1080))
 
+# Hale + Amora chamber story stills (16:9 CGs)
+image bg hale amora chamber 01 = Transform("story/hale_amora_chamber/01_establish.png", xysize=(1920, 1080))
+image bg hale amora chamber 02 = Transform("story/hale_amora_chamber/02_hale_slam.png", xysize=(1920, 1080))
+image bg hale amora chamber 03 = Transform("story/hale_amora_chamber/03_amora_amused.png", xysize=(1920, 1080))
+image bg hale amora chamber 04 = Transform("story/hale_amora_chamber/04_hale_jab.png", xysize=(1920, 1080))
+image bg hale amora chamber 05 = Transform("story/hale_amora_chamber/05_amora_lean.png", xysize=(1920, 1080))
+image bg hale amora chamber 06 = Transform("story/hale_amora_chamber/06_amora_approaches.png", xysize=(1920, 1080))
+image bg hale amora chamber 07 = Transform("story/hale_amora_chamber/07_amora_shoulders.png", xysize=(1920, 1080))
+image bg hale amora chamber 08 = Transform("story/hale_amora_chamber/08_hale_turns.png", xysize=(1920, 1080))
+image bg hale amora chamber 09 = Transform("story/hale_amora_chamber/09_amora_smile.png", xysize=(1920, 1080))
+image bg hale amora chamber 10 = Transform("story/hale_amora_chamber/10_amora_plan.png", xysize=(1920, 1080))
+image bg hale amora chamber 11 = Transform("story/hale_amora_chamber/11_hale_vicious_smile.png", xysize=(1920, 1080))
+
+
 # Player battle tags — Dreamkrate Vespera battle kit (13 unique stills).
 # Missing status/action poses alias the closest available art until painted.
 image player attack = Transform("vespera/battle/attack.png", ysize=700)
