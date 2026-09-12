@@ -43,3 +43,9 @@ Abridged supporting-cast set under `game/images/hale/` (bust + full):
 - Central: `show hale smug`
 - Battle poses remain under `game/images/enemies/hale/` (`hale idle`, `hale attack`, …)
 
+## Hale + Amora chamber CGs
+
+Story stills under `game/images/story/hale_amora_chamber/` (01–11).
+
+Show as: `scene bg hale amora chamber 01` … `scene bg hale amora chamber 11`
+
