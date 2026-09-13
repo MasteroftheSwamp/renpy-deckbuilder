@@ -10,6 +10,7 @@
 
 define vespera = Character("Vespera", color="#b56cff")
 define dr_hale = Character("Dr. Hale", image="hale", color="#7aa3b8")
+define amora = Character("Amora", image="amora", color="#9b59b6")
 
 default vespera_suit_damaged = False
 default vespera_intro_seen = False

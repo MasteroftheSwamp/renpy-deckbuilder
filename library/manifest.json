@@ -24,6 +24,16 @@
         "enemy": "game/images/enemies/hale.png",
         "hover": "game/images/enemies/hale hover.png"
       }
+    },
+    {
+      "id": "amora",
+      "display_name": "Amora",
+      "file": "library/characters/amora.json",
+      "enemy_image": "amora",
+      "images": {
+        "enemy": "game/images/enemies/amora.png",
+        "hover": "game/images/enemies/amora hover.png"
+      }
     }
   ],
   "rf_rooms": [
@@ -61,7 +71,11 @@
       "id": "rooftop_a",
       "file": "library/rf_chains/rooftop_a.json",
       "entry": "rooftop_a_1",
-      "rooms": ["rooftop_a_1", "rooftop_a_2", "rooftop_a_3"],
+      "rooms": [
+        "rooftop_a_1",
+        "rooftop_a_2",
+        "rooftop_a_3"
+      ],
       "enter_label": "rooftop_a"
     }
   ],
