@@ -80,6 +80,57 @@ image hale pleased = Transform("hale/full/pleased.png", ysize=980)
 image hale frustrated = Transform("hale/full/frustrated.png", ysize=980)
 
 
+# Amora dialogue — abridged emotions (supporting cast). Busts = side; full = centrals.
+# Usage: amora smirk "…"  |  show amora smirk
+# Emotions: neutral, smirk, sadistic, angry, amused, cold, surprised
+image side amora = Image("amora/bust/neutral.png")
+image side amora neutral = Image("amora/bust/neutral.png")
+image side amora smirk = Image("amora/bust/smirk.png")
+image side amora sadistic = Image("amora/bust/sadistic.png")
+image side amora angry = Image("amora/bust/angry.png")
+image side amora amused = Image("amora/bust/amused.png")
+image side amora cold = Image("amora/bust/cold.png")
+image side amora surprised = Image("amora/bust/surprised.png")
+
+image amora neutral = Transform("amora/full/neutral.png", ysize=980)
+image amora smirk = Transform("amora/full/smirk.png", ysize=980)
+image amora sadistic = Transform("amora/full/sadistic.png", ysize=980)
+image amora angry = Transform("amora/full/angry.png", ysize=980)
+image amora amused = Transform("amora/full/amused.png", ysize=980)
+image amora cold = Transform("amora/full/cold.png", ysize=980)
+image amora surprised = Transform("amora/full/surprised.png", ysize=980)
+
+# Amora battle tags — OpenArt kit under enemies/amora/ (700px tall).
+# Engine probes images/enemies/amora hover.png for layout size.
+image amora attack = Image("enemies/amora/attack.png")
+image amora heal = Image("enemies/amora/heal.png")
+image amora kick = Image("enemies/amora/kick.png")
+image amora punch = Image("enemies/amora/punch.png")
+image amora slash = Image("enemies/amora/slash.png")
+image amora raise_hand = Image("enemies/amora/raise_hand.png")
+image amora drink = Image("enemies/amora/drink.png")
+image amora cast = Image("enemies/amora/cast.png")
+image amora hurt = Image("enemies/amora/hurt.png")
+image amora hover = Image("enemies/amora/hover.png")
+image amora idle = Image("enemies/amora/idle.png")
+image amora idle_low = Image("enemies/amora/idle_low.png")
+image amora idle_stunned = Image("enemies/amora/idle_stunned.png")
+image amora idle_stunned_low = Image("enemies/amora/idle_stunned_low.png")
+image amora idle_poisoned = Image("enemies/amora/idle_poisoned.png")
+image amora idle_poisoned_low = Image("enemies/amora/idle_poisoned_low.png")
+image amora idle_burned = Image("enemies/amora/idle_burned.png")
+image amora idle_burned_low = Image("enemies/amora/idle_burned_low.png")
+image amora idle_frozen = Image("enemies/amora/idle_frozen.png")
+image amora idle_frozen_low = Image("enemies/amora/idle_frozen_low.png")
+image amora idle_weak = Image("enemies/amora/idle_weak.png")
+image amora idle_weak_low = Image("enemies/amora/idle_weak_low.png")
+image amora idle_vulnerable = Image("enemies/amora/idle_vulnerable.png")
+image amora idle_vulnerable_low = Image("enemies/amora/idle_vulnerable_low.png")
+image amora idle_shielded = Image("enemies/amora/idle_shielded.png")
+image amora idle_shielded_low = Image("enemies/amora/idle_shielded_low.png")
+
+
+
 # Story backgrounds
 image bg rooftop night = Transform("vespera/bg_rooftop_night.jpg", xysize=(1920, 1080))
 image bg lab = Transform("vespera/bg_lab.jpg", xysize=(1920, 1080))

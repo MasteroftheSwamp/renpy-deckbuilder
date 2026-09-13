@@ -49,3 +49,13 @@ Story stills under `game/images/story/hale_amora_chamber/` (01–11).
 
 Show as: `scene bg hale amora chamber 01` … `scene bg hale amora chamber 11`
 
+## Amora dialogue + battle art
+
+Abridged set under `game/images/amora/` (bust + full) and `game/images/enemies/amora/` (battle):
+
+Emotions: `neutral`, `smirk`, `sadistic`, `angry`, `amused`, `cold`, `surprised`
+
+- Side: `amora smirk "…"`
+- Central: `show amora smirk`
+- Battle enemy image: `"image": "amora"`
+

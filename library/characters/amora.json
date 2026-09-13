@@ -1,0 +1,27 @@
+{
+  "id": "amora",
+  "display_name": "Amora",
+  "enemy_image": "amora",
+  "images": {
+    "enemy": "game/images/enemies/amora.png",
+    "hover": "game/images/enemies/amora hover.png",
+    "dialogue_bust": "game/images/amora/bust/",
+    "dialogue_full": "game/images/amora/full/",
+    "battle": "game/images/enemies/amora/"
+  },
+  "dialogue_emotions": [
+    "neutral",
+    "smirk",
+    "sadistic",
+    "angry",
+    "amused",
+    "cold",
+    "surprised"
+  ],
+  "usage": {
+    "side": "amora smirk \"…\" (Character image=amora → side amora <emotion>)",
+    "center": "show amora smirk",
+    "battle": "enemy image tag amora (amora idle / attack / …)"
+  },
+  "voice_notes": "Sadistic supervillainess; supporting cast — abridged emotion set."
+}
