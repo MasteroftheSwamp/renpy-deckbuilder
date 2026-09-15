@@ -1,6 +1,10 @@
 # Vespera / Elena Voss — declared CGs, battle stills, Hale, story bgs.
 # Files live under game/images/vespera/
 
+# Side-image height for dialogue busts (say-box faces). Tweak while testing;
+# later bake PNGs to this size and drop the Transform.
+define SIDE_BUST_YSIZE = 420
+
 # Combat stills (Dreamkrate battle kit)
 image vespera combat idle = Transform("vespera/battle/idle.png", ysize=920)
 image vespera combat attack = Transform("vespera/battle/attack.png", ysize=920)
@@ -60,17 +64,17 @@ image hale idle_shielded = Image("enemies/hale/idle_shielded.png")
 image hale idle_shielded_low = Image("enemies/hale/idle_shielded_low.png")
 
 # Hale dialogue — abridged emotions (supporting cast). Busts = side images; full = centrals.
-# Side busts scaled ysize=420 so they sit as faces beside the say box (tweak here, keep full-res PNGs).
+# Side busts scaled ysize=SIDE_BUST_YSIZE so they sit as faces beside the say box (tweak here, keep full-res PNGs).
 # Usage later: dr_hale smug "…"  |  show hale smug
 # Emotions: neutral, smug, clinical, angry, surprised, pleased, frustrated
-image side hale = Transform("hale/bust/neutral.png", ysize=420)
-image side hale neutral = Transform("hale/bust/neutral.png", ysize=420)
-image side hale smug = Transform("hale/bust/smug.png", ysize=420)
-image side hale clinical = Transform("hale/bust/clinical.png", ysize=420)
-image side hale angry = Transform("hale/bust/angry.png", ysize=420)
-image side hale surprised = Transform("hale/bust/surprised.png", ysize=420)
-image side hale pleased = Transform("hale/bust/pleased.png", ysize=420)
-image side hale frustrated = Transform("hale/bust/frustrated.png", ysize=420)
+image side hale = Transform("hale/bust/neutral.png", ysize=SIDE_BUST_YSIZE)
+image side hale neutral = Transform("hale/bust/neutral.png", ysize=SIDE_BUST_YSIZE)
+image side hale smug = Transform("hale/bust/smug.png", ysize=SIDE_BUST_YSIZE)
+image side hale clinical = Transform("hale/bust/clinical.png", ysize=SIDE_BUST_YSIZE)
+image side hale angry = Transform("hale/bust/angry.png", ysize=SIDE_BUST_YSIZE)
+image side hale surprised = Transform("hale/bust/surprised.png", ysize=SIDE_BUST_YSIZE)
+image side hale pleased = Transform("hale/bust/pleased.png", ysize=SIDE_BUST_YSIZE)
+image side hale frustrated = Transform("hale/bust/frustrated.png", ysize=SIDE_BUST_YSIZE)
 
 image hale neutral = Transform("hale/full/neutral.png", ysize=980)
 image hale smug = Transform("hale/full/smug.png", ysize=980)
@@ -84,14 +88,14 @@ image hale frustrated = Transform("hale/full/frustrated.png", ysize=980)
 # Amora dialogue — abridged emotions (supporting cast). Busts = side; full = centrals.
 # Usage: amora smirk "…"  |  show amora smirk
 # Emotions: neutral, smirk, sadistic, angry, amused, cold, surprised
-image side amora = Transform("amora/bust/neutral.png", ysize=420)
-image side amora neutral = Transform("amora/bust/neutral.png", ysize=420)
-image side amora smirk = Transform("amora/bust/smirk.png", ysize=420)
-image side amora sadistic = Transform("amora/bust/sadistic.png", ysize=420)
-image side amora angry = Transform("amora/bust/angry.png", ysize=420)
-image side amora amused = Transform("amora/bust/amused.png", ysize=420)
-image side amora cold = Transform("amora/bust/cold.png", ysize=420)
-image side amora surprised = Transform("amora/bust/surprised.png", ysize=420)
+image side amora = Transform("amora/bust/neutral.png", ysize=SIDE_BUST_YSIZE)
+image side amora neutral = Transform("amora/bust/neutral.png", ysize=SIDE_BUST_YSIZE)
+image side amora smirk = Transform("amora/bust/smirk.png", ysize=SIDE_BUST_YSIZE)
+image side amora sadistic = Transform("amora/bust/sadistic.png", ysize=SIDE_BUST_YSIZE)
+image side amora angry = Transform("amora/bust/angry.png", ysize=SIDE_BUST_YSIZE)
+image side amora amused = Transform("amora/bust/amused.png", ysize=SIDE_BUST_YSIZE)
+image side amora cold = Transform("amora/bust/cold.png", ysize=SIDE_BUST_YSIZE)
+image side amora surprised = Transform("amora/bust/surprised.png", ysize=SIDE_BUST_YSIZE)
 
 image amora neutral = Transform("amora/full/neutral.png", ysize=980)
 image amora smirk = Transform("amora/full/smirk.png", ysize=980)
