@@ -1,0 +1,23 @@
+{
+  "id": "hale_amora_lair",
+  "display_name": "Hale's Lair (opening)",
+  "label": "hale_amora_lair",
+  "file": "game/scripts/story/hale_amora_lair.rpy",
+  "first_level": true,
+  "next": "vespera_patrol",
+  "characters": ["hale", "amora"],
+  "backgrounds": [
+    "bg hale amora chamber 01",
+    "bg hale amora chamber 02",
+    "bg hale amora chamber 03",
+    "bg hale amora chamber 04",
+    "bg hale amora chamber 05",
+    "bg hale amora chamber 06",
+    "bg hale amora chamber 07",
+    "bg hale amora chamber 08",
+    "bg hale amora chamber 09",
+    "bg hale amora chamber 10",
+    "bg hale amora chamber 11"
+  ],
+  "notes": "Opening VN beat. Uses chamber CGs + side busts. Jump target from label start."
+}

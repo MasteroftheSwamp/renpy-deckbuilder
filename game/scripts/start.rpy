@@ -11,8 +11,8 @@ label start:
     # HUD visible from the very beginning (overworld + intro)
     $ show_hud()
 
-    # Enter the Vespera patrol slice (Templates HUD still jumps template_index)
-    jump vespera_patrol
+    # Opening VN: Hale + Amora lair, then rooftop patrol
+    jump hale_amora_lair
 
 
 label intro:

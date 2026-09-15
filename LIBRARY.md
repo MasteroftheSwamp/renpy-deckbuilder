@@ -59,3 +59,9 @@ Emotions: `neutral`, `smirk`, `sadistic`, `angry`, `amused`, `cold`, `surprised`
 - Central: `show amora smirk`
 - Battle enemy image: `"image": "amora"`
 
+## Opening VN — Hale's Lair
+
+First level: `jump hale_amora_lair` (also the boot target from `label start`).
+
+Uses `bg hale amora chamber 01`–`11` and side busts via `dr_hale` / `amora`. Ends by jumping `vespera_patrol`.
+
