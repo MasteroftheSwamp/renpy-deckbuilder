@@ -60,16 +60,17 @@ image hale idle_shielded = Image("enemies/hale/idle_shielded.png")
 image hale idle_shielded_low = Image("enemies/hale/idle_shielded_low.png")
 
 # Hale dialogue — abridged emotions (supporting cast). Busts = side images; full = centrals.
+# Side busts scaled ysize=420 so they sit as faces beside the say box (tweak here, keep full-res PNGs).
 # Usage later: dr_hale smug "…"  |  show hale smug
 # Emotions: neutral, smug, clinical, angry, surprised, pleased, frustrated
-image side hale = Image("hale/bust/neutral.png")
-image side hale neutral = Image("hale/bust/neutral.png")
-image side hale smug = Image("hale/bust/smug.png")
-image side hale clinical = Image("hale/bust/clinical.png")
-image side hale angry = Image("hale/bust/angry.png")
-image side hale surprised = Image("hale/bust/surprised.png")
-image side hale pleased = Image("hale/bust/pleased.png")
-image side hale frustrated = Image("hale/bust/frustrated.png")
+image side hale = Transform("hale/bust/neutral.png", ysize=420)
+image side hale neutral = Transform("hale/bust/neutral.png", ysize=420)
+image side hale smug = Transform("hale/bust/smug.png", ysize=420)
+image side hale clinical = Transform("hale/bust/clinical.png", ysize=420)
+image side hale angry = Transform("hale/bust/angry.png", ysize=420)
+image side hale surprised = Transform("hale/bust/surprised.png", ysize=420)
+image side hale pleased = Transform("hale/bust/pleased.png", ysize=420)
+image side hale frustrated = Transform("hale/bust/frustrated.png", ysize=420)
 
 image hale neutral = Transform("hale/full/neutral.png", ysize=980)
 image hale smug = Transform("hale/full/smug.png", ysize=980)
@@ -83,14 +84,14 @@ image hale frustrated = Transform("hale/full/frustrated.png", ysize=980)
 # Amora dialogue — abridged emotions (supporting cast). Busts = side; full = centrals.
 # Usage: amora smirk "…"  |  show amora smirk
 # Emotions: neutral, smirk, sadistic, angry, amused, cold, surprised
-image side amora = Image("amora/bust/neutral.png")
-image side amora neutral = Image("amora/bust/neutral.png")
-image side amora smirk = Image("amora/bust/smirk.png")
-image side amora sadistic = Image("amora/bust/sadistic.png")
-image side amora angry = Image("amora/bust/angry.png")
-image side amora amused = Image("amora/bust/amused.png")
-image side amora cold = Image("amora/bust/cold.png")
-image side amora surprised = Image("amora/bust/surprised.png")
+image side amora = Transform("amora/bust/neutral.png", ysize=420)
+image side amora neutral = Transform("amora/bust/neutral.png", ysize=420)
+image side amora smirk = Transform("amora/bust/smirk.png", ysize=420)
+image side amora sadistic = Transform("amora/bust/sadistic.png", ysize=420)
+image side amora angry = Transform("amora/bust/angry.png", ysize=420)
+image side amora amused = Transform("amora/bust/amused.png", ysize=420)
+image side amora cold = Transform("amora/bust/cold.png", ysize=420)
+image side amora surprised = Transform("amora/bust/surprised.png", ysize=420)
 
 image amora neutral = Transform("amora/full/neutral.png", ysize=980)
 image amora smirk = Transform("amora/full/smirk.png", ysize=980)
