@@ -104,6 +104,12 @@
   ],
   "vn_beats": [
     {
+      "id": "hale_amora_lair",
+      "file": "library/vn_beats/hale_amora_lair.json",
+      "label": "hale_amora_lair",
+      "first_level": true
+    },
+    {
       "id": "template_vn",
       "label": "template_vn",
       "file": "game/scripts/templates/vn_scene.rpy"
